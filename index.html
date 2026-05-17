@@ -530,6 +530,125 @@
     .modal-thumbs { padding: 10px 12px; }
   }
 
+  /* Uzbek Foods */
+  .uzbek-section { margin-bottom: 64px; }
+  .uzbek-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .uzbek-badge {
+    background: var(--gold-pale);
+    color: var(--amber);
+    border: 1px dashed var(--gold);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    align-self: center;
+  }
+  .uzbek-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 10px;
+  }
+  .uzbek-item {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .uzbek-item.span2 { grid-column: span 2; }
+  .uzbek-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+  .uzbek-item:hover img { transform: scale(1.06); }
+  .uzbek-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15,46,37,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .uzbek-item:hover .uzbek-overlay { opacity: 1; }
+
+  /* Photo lightbox */
+  .photo-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.94);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-overlay.open { display: flex; }
+  .photo-overlay img {
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+  .photo-close {
+    position: absolute;
+    top: 20px; right: 24px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .photo-close:hover { background: rgba(255,255,255,0.1); color: white; }
+  .photo-nav {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .photo-nav:hover { background: rgba(212,175,55,0.3); border-color: var(--gold); }
+  .photo-nav.prev { left: 20px; }
+  .photo-nav.next { right: 20px; }
+  .photo-counter {
+    position: absolute;
+    bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 768px) {
+    .uzbek-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+    .uzbek-item.span2 { grid-column: span 2; }
+  }
+  @media (max-width: 480px) {
+    .uzbek-grid { grid-auto-rows: 130px; gap: 6px; }
+  }
+
   /* Footer */
   .footer {
     background: var(--dark);
@@ -1202,6 +1321,68 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 
   </div>
 
+    <!-- Uzbek Foods -->
+  <div class="uzbek-section">
+    <div class="uzbek-header">
+      <div>
+        <div class="section-title">Uzbek Foods</div>
+        <div class="section-subtitle">Makka · Clock Tower yaqinida — o'zbek taomlari restorani</div>
+      </div>
+      <div class="uzbek-badge">+$60 · ixtiyoriy</div>
+    </div>
+    <div class="uzbek-grid">
+      <div class="uzbek-item span2" onclick="openPhoto(0)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039320/u1_gwybpn.png" alt="Uzbek Foods 1" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+      <div class="uzbek-item" onclick="openPhoto(1)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u4_igtunq.png" alt="Uzbek Foods 2" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+      <div class="uzbek-item" onclick="openPhoto(2)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u6_mvgihs.png" alt="Uzbek Foods 3" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+      <div class="uzbek-item" onclick="openPhoto(3)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u3_pljsb3.png" alt="Uzbek Foods 4" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+      <div class="uzbek-item" onclick="openPhoto(4)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039322/u2_aeerjb.png" alt="Uzbek Foods 5" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+      <div class="uzbek-item span2" onclick="openPhoto(5)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039323/u8_gs6yuf.png" alt="Uzbek Foods 6" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+      <div class="uzbek-item" onclick="openPhoto(6)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039322/u9_n6lek2.png" alt="Uzbek Foods 7" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+      <div class="uzbek-item" onclick="openPhoto(7)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u5_p7ucrz.png" alt="Uzbek Foods 8" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+      <div class="uzbek-item" onclick="openPhoto(8)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u7_j1vdkv.png" alt="Uzbek Foods 9" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+      <div class="uzbek-item" onclick="openPhoto(9)">
+        <img src="https://res.cloudinary.com/duzx5npwg/image/upload/v1779039327/u10_lewrkm.png" alt="Uzbek Foods 10" loading="lazy">
+        <div class="uzbek-overlay"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo lightbox -->
+  <div class="photo-overlay" id="photoModal" onclick="closePhoto()">
+    <button class="photo-close" onclick="closePhoto()">✕</button>
+    <button class="photo-nav prev" id="photoPrev" onclick="event.stopPropagation();changePhoto(-1)">‹</button>
+    <img id="photoImg" src="" alt="">
+    <button class="photo-nav next" id="photoNext" onclick="event.stopPropagation();changePhoto(1)">›</button>
+    <div class="photo-counter" id="photoCounter"></div>
+  </div>
+
     <!-- Schedule -->
   <div class="schedule-section">
     <div class="section-title">Jo'nаsh sanаlari</div>
@@ -1494,6 +1675,46 @@ const timerUpdate = setInterval(function() {
         location.reload(); 
     }
 }, 1000);
+
+const photoUrls = [
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039320/u1_gwybpn.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u4_igtunq.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u6_mvgihs.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u3_pljsb3.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039322/u2_aeerjb.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039323/u8_gs6yuf.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039322/u9_n6lek2.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u5_p7ucrz.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u7_j1vdkv.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039327/u10_lewrkm.png',
+];
+let currentPhoto = 0;
+
+function openPhoto(idx) {
+  currentPhoto = idx;
+  document.getElementById('photoImg').src = photoUrls[idx];
+  document.getElementById('photoCounter').textContent = (idx + 1) + ' / ' + photoUrls.length;
+  document.getElementById('photoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePhoto() {
+  document.getElementById('photoModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function changePhoto(dir) {
+  currentPhoto = (currentPhoto + dir + photoUrls.length) % photoUrls.length;
+  document.getElementById('photoImg').src = photoUrls[currentPhoto];
+  document.getElementById('photoCounter').textContent = (currentPhoto + 1) + ' / ' + photoUrls.length;
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('photoModal').classList.contains('open')) return;
+  if (e.key === 'Escape')      closePhoto();
+  if (e.key === 'ArrowLeft')   changePhoto(-1);
+  if (e.key === 'ArrowRight')  changePhoto(1);
+});
 
 function weatherIcon(code) {
     if (code === 0)  return '☀️';

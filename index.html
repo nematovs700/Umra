@@ -1102,10 +1102,10 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
             <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
               2 mahal ovqat: +200$
             </div>
-            <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
-              Uzbek Foods | Clock tower: +60$
-            </div>  
-          </div>          
+            <div onclick="openPhoto(0)" style="display: inline-flex; align-items: center; gap: 4px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer;">
+              📷 Uzbek Foods | Clock tower: +60$
+            </div>
+          </div>
         </div>
       </div>
       <div class="card-actions">
@@ -1153,8 +1153,8 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
             <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
               2 mahal ovqat: +160$
             </div>
-            <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
-              Uzbek Foods | Clock tower: +60$
+            <div onclick="openPhoto(0)" style="display: inline-flex; align-items: center; gap: 4px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer;">
+              📷 Uzbek Foods | Clock tower: +60$
             </div>  
           </div>          
         </div>
@@ -1625,14 +1625,14 @@ const timerUpdate = setInterval(function() {
 
 const photoUrls = [
   'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039320/u1_gwybpn.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u4_igtunq.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u6_mvgihs.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u3_pljsb3.png',
   'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039322/u2_aeerjb.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u3_pljsb3.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u4_igtunq.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u5_p7ucrz.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u6_mvgihs.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u7_j1vdkv.png',
   'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039323/u8_gs6yuf.png',
   'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039322/u9_n6lek2.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u5_p7ucrz.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u7_j1vdkv.png',
   'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039327/u10_lewrkm.png',
 ];
 let currentPhoto = 0;

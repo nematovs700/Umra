@@ -379,13 +379,13 @@
     border-color: var(--gold);
   }
   .map-btn {
-    background: transparent;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-  }
-  .map-btn:hover {
     background: var(--green-light);
     color: var(--green);
+    border: 1px solid rgba(31,91,79,0.2);
+  }
+  .map-btn:hover {
+    background: var(--green);
+    color: #fff;
     border-color: var(--green);
   }
   .video-btn svg, .map-btn svg { flex-shrink: 0; }
@@ -785,8 +785,14 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 }
 
 .weather-item .feels {
-    font-size: 10px;
-    color: #bbb;
+    font-size: 11px;
+    color: #888;
+    font-weight: 500;
+}
+.weather-item .condition {
+    font-size: 11px;
+    color: #aaa;
+    font-weight: 400;
 }
 
 .weather-item .w-icon {
@@ -1179,7 +1185,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('taj')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Video (5 ta)
+          Video
         </button>
         <a class="map-btn" href="https://maps.app.goo.gl/aLbay8D32epyVonV7" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -1286,6 +1292,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
             <span class="city">Madina</span>
             <span class="temp">--°C</span>
             <span class="feels">--</span>
+            <span class="condition">--</span>
         </div>
         <span class="w-icon">⏳</span>
     </div>
@@ -1296,6 +1303,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
             <span class="city">Makka</span>
             <span class="temp">--°C</span>
             <span class="feels">--</span>
+            <span class="condition">--</span>
         </div>
         <span class="w-icon">⏳</span>
     </div>
@@ -1517,9 +1525,10 @@ async function fetchCity(lat, lon, elId) {
     const data = await res.json();
     const c    = data.current;
     const el   = document.getElementById(elId);
-    el.querySelector('.temp').innerText   = Math.round(c.temperature_2m) + '°C';
-    el.querySelector('.feels').innerText  = 'His: ' + Math.round(c.apparent_temperature) + '°C · ' + weatherDesc(c.weathercode);
-    el.querySelector('.w-icon').innerText = weatherIcon(c.weathercode);
+    el.querySelector('.temp').innerText      = Math.round(c.temperature_2m) + '°C';
+    el.querySelector('.feels').innerText     = 'His: ' + Math.round(c.apparent_temperature) + '°C';
+    el.querySelector('.condition').innerText = weatherDesc(c.weathercode);
+    el.querySelector('.w-icon').innerText    = weatherIcon(c.weathercode);
 }
 
 async function updateWeather() {

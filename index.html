@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Umra 2026 — Paketlar</title>
 <link rel="icon" type="image/png" href="logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 :root {
@@ -212,7 +212,7 @@
     align-items: center;
   }
   .price-label { font-size: 13px; color: var(--text-muted); }
-  .price-val { font-size: 15px; font-weight: 500; color: var(--dark); }
+  .price-val { font-size: 15px; font-weight: 500; color: var(--dark); white-space: nowrap; }
   .price-val.highlight { color: var(--gold); font-size: 17px; font-weight: 600; }
 
   .card-hotels {
@@ -931,6 +931,46 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     .weather-item .temp { font-size: 17px; }
 }
 
+/* Russian font overrides */
+body.lang-ru { font-family: 'Inter', sans-serif; }
+body.lang-ru h1,
+body.lang-ru .section-title,
+body.lang-ru .pkg-name,
+body.lang-ru .modal-title,
+body.lang-ru .calc-total-val,
+body.lang-ru [style*="Playfair Display"] { font-family: 'Cormorant Garamond', serif !important; }
+
+/* Lang Switcher */
+.lang-switcher {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  gap: 3px;
+  background: rgba(15,46,37,0.88);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 4px;
+  border: 1px solid rgba(212,175,55,0.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+.lang-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.04em;
+}
+.lang-btn.active { background: var(--gold); color: var(--dark); }
+.lang-btn:hover:not(.active) { color: #fff; }
+
 /* FAQ */
 .faq-section { margin-bottom: 64px; }
 .faq-list { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
@@ -1015,6 +1055,11 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 </head>
 <body>
 
+<div class="lang-switcher">
+  <button class="lang-btn active" onclick="setLang('uz')">UZ</button>
+  <button class="lang-btn" onclick="setLang('ru')">RU</button>
+</div>
+
 <div class="fab-container">
     <!-- Asosiy tugma (Bosilganda menyu ochiladi) -->
     <div class="fab-main" onclick="toggleFab()">
@@ -1037,31 +1082,31 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 
 <div class="hero">
   <img src="logo.png" alt="Etihad Logo" style="width: 200px; height: auto; margin-bottom: 20px;">
-  <div class="hero-label">Etihad · Umra Mavsumi 2026</div>
-  <h1>Sharafli yo'lda <span>sharafli xizmat</span></h1>
-  <div class="hero-sub">Etihad umra paketlari — Iyun · Oktyabr 2026</div>
+  <div class="hero-label" data-i18n="hero_label">Etihad · Umra Mavsumi 2026</div>
+  <h1 data-i18n="hero_h1">Sharafli yo'lda <span>sharafli xizmat</span></h1>
+  <div class="hero-sub" data-i18n="hero_sub">Etihad umra paketlari — Iyun · Oktyabr 2026</div>
   <div class="hero-line"></div>
 <div class="countdown-section">
     <!-- Taymer kodi shu yerda turibdi -->
 </div>
   <div class="countdown-section">
-    <h3>Navbatdagi guruh uchishiga qoldi:</h3>
+    <h3 data-i18n="countdown_title">Navbatdagi guruh uchishiga qoldi:</h3>
     <div id="timer">
         <div class="time-block">
             <span id="days">00</span>
-            <p>Kun</p>
+            <p data-i18n="time_kun">Kun</p>
         </div>
         <div class="time-block">
             <span id="hours">00</span>
-            <p>Soat</p>
+            <p data-i18n="time_soat">Soat</p>
         </div>
         <div class="time-block">
             <span id="minutes">00</span>
-            <p>Min</p>
+            <p data-i18n="time_min">Min</p>
         </div>
         <div class="time-block">
             <span id="seconds">00</span>
-            <p>Sek</p>
+            <p data-i18n="time_sek">Sek</p>
         </div>
     </div>
 </div>
@@ -1079,28 +1124,28 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
     <path d="M9 3c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v1h2c1.66 0 3 1.34 3 3v12c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h2V3zm2 1h2V3h-2v1zm-3 4v10h2V8H8zm6 0v10h2V8h-2z"/>
     </svg>
-    Yuk: <strong>30 kg</strong>
+    <span data-i18n="fb_luggage">Yuk</span>: <strong>30 kg</strong>
   </div>
   <div class="flight-item">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
       <path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2h1a3 3 0 013 3v7a3 3 0 01-3 3H7a3 3 0 01-3-3v-7a3 3 0 013-3h1zm2 0h4V5h-4v2zm-1 4a1 1 0 000 2h6a1 1 0 100-2H9z"/>
     </svg>
-    Qo'l yuki: <strong>8 kg</strong>
+    <span data-i18n="fb_handbag">Qo'l yuki</span>: <strong>8 kg</strong>
   </div>
   <div class="flight-sep"></div>
   <div class="flight-item">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
   <path d="M12 2c-4.4 0-8 .4-8 4v7c0 2.2 1.8 4 4 4l-2 2v1h12v-1l-2-2c2.2 0 4-1.8 4-4V6c0-3.6-3.6-4-8-4zm-4 11a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm8 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm2-5H6V6h12v2z"/>
   </svg>
-  <strong>Tez yurar poezd</strong> bilan transfer
+  <span data-i18n="fb_transfer"><strong>Tez yurar poezd</strong> bilan transfer</span>
 </div>
 </div>
 
 <div class="main">
 
   <!-- Packages -->
-  <div class="section-title">Umra paketlari</div>
-  <div class="section-subtitle">Etihad umra paketlari — ishonchli xizmat haqida qayg'uradiganlar uchun </div>
+  <div class="section-title" data-i18n="pkg_title">Umra paketlari</div>
+  <div class="section-subtitle" data-i18n="pkg_sub">Etihad umra paketlari — ishonchli xizmat haqida qayg'uradiganlar uchun</div>
 
   <div class="cards-grid">
 
@@ -1109,29 +1154,29 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-header">
         <div class="pkg-badge badge-premium">⭐ Swissotel · 10</div>
         <div class="pkg-name">Swissotel</div>
-        <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
+        <div class="pkg-duration" data-i18n="dur_10_thu">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val">$2 700</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 900</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 700</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 600</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_sngl">1 kishilik (sngl)</span><span class="price-val">$2 700</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_dbl">2 kishilik (dbl)</span><span class="price-val">$1 900</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_trpl">3 kishilik (trpl)</span><span class="price-val">$1 700</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_quad">4 kishilik (quad)</span><span class="price-val">$1 600</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
-            <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>
+            <div class="hotel-meta" data-i18n="meta_bosphorus">4 kecha · Madina · 2 mahal shved stoli</div>
           </div>
         </div>
         <div class="hotel-item">
             <div class="hotel-dot"></div>
             <div>
                 <div class="hotel-name">Swissotel Makkah</div>
-                <div class="hotel-meta">5 kecha · Makka · 1 mahal shved stoli</div>
+                <div class="hotel-meta" data-i18n="meta_5n_1shved">5 kecha · Makka · 1 mahal shved stoli</div>
                 <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
-                    2 mahal ovqat: +160$
+                    <span data-i18n="badge_2meal_160">2 mahal ovqat: +160$</span>
                 </div>
                 <div onclick="openPhoto(0)" style="display: inline-flex; align-items: center; gap: 4px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer;">
                   📷 Uzbek Foods | Clock tower: +60$
@@ -1142,16 +1187,16 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('swissotel')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Video
+          <span data-i18n="btn_video">Video</span>
         </button>
         <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Swissotel+Makkah" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Xarita
+          <span data-i18n="btn_map">Xarita</span>
         </a>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        1 guruh · 25 ziyoratchi
+        <span data-i18n="grp_1_25">1 guruh · 25 ziyoratchi</span>
       </div>
     </div>
 
@@ -1160,29 +1205,29 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-header">
         <div class="pkg-badge badge-jumeirah">❖ Jumeirah · 10</div>
         <div class="pkg-name">Jumeirah</div>
-        <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
+        <div class="pkg-duration" data-i18n="dur_10_thu">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val">$2 700</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 900</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 700</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 600</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_sngl">1 kishilik (sngl)</span><span class="price-val">$2 700</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_dbl">2 kishilik (dbl)</span><span class="price-val">$1 900</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_trpl">3 kishilik (trpl)</span><span class="price-val">$1 700</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_quad">4 kishilik (quad)</span><span class="price-val">$1 600</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
-            <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>           
+            <div class="hotel-meta" data-i18n="meta_bosphorus">4 kecha · Madina · 2 mahal shved stoli</div>           
           </div>
         </div>
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Jumeirah Jabal Omar Makkah</div>
-            <div class="hotel-meta">5 kecha · Makka · 1 mahal shved stoli</div>
+            <div class="hotel-meta" data-i18n="meta_5n_1shved">5 kecha · Makka · 1 mahal shved stoli</div>
             <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
-              2 mahal ovqat: +200$
+              <span data-i18n="badge_2meal_200">2 mahal ovqat: +200$</span>
             </div>
             <div onclick="openPhoto(0)" style="display: inline-flex; align-items: center; gap: 4px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer;">
               📷 Uzbek Foods | Clock tower: +60$
@@ -1193,16 +1238,16 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('jumeirah')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Video
+          <span data-i18n="btn_video">Video</span>
         </button>
         <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Jumeirah+Jabal+Omar+Makkah" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Xarita
+          <span data-i18n="btn_map">Xarita</span>
         </a>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        1 guruh · 25 ziyoratchi
+        <span data-i18n="grp_1_25">1 guruh · 25 ziyoratchi</span>
       </div>
     </div>
 
@@ -1211,29 +1256,29 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-header">
         <div class="pkg-badge badge-towers">✧ Makkah Towers · 10</div>
         <div class="pkg-name">Makkah Towers</div>
-        <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
+        <div class="pkg-duration" data-i18n="dur_10_thu">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val">$2 500</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 800</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 600</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 500</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_sngl">1 kishilik (sngl)</span><span class="price-val">$2 500</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_dbl">2 kishilik (dbl)</span><span class="price-val">$1 800</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_trpl">3 kishilik (trpl)</span><span class="price-val">$1 600</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_quad">4 kishilik (quad)</span><span class="price-val">$1 500</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
-            <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>           
+            <div class="hotel-meta" data-i18n="meta_bosphorus">4 kecha · Madina · 2 mahal shved stoli</div>           
           </div>
         </div>
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Makkah Towers</div>
-            <div class="hotel-meta">5 kecha · Makka · 1 mahal shved stoli</div>
+            <div class="hotel-meta" data-i18n="meta_5n_1shved">5 kecha · Makka · 1 mahal shved stoli</div>
             <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
-              2 mahal ovqat: +160$
+              <span data-i18n="badge_2meal_160">2 mahal ovqat: +160$</span>
             </div>
             <div onclick="openPhoto(0)" style="display: inline-flex; align-items: center; gap: 4px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer;">
               📷 Uzbek Foods | Clock tower: +60$
@@ -1244,16 +1289,16 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('mtowers')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Video
+          <span data-i18n="btn_video">Video</span>
         </button>
         <a class="map-btn" href="https://maps.app.goo.gl/pL6Wkp3Z8aRxjMuW9" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Xarita
+          <span data-i18n="btn_map">Xarita</span>
         </a>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        1 guruh · 25 ziyoratchi
+        <span data-i18n="grp_1_25">1 guruh · 25 ziyoratchi</span>
       </div>
     </div>
 
@@ -1262,42 +1307,42 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-header">
         <div class="pkg-badge badge-lux">✦ Anjum · 10</div>
         <div class="pkg-name">Anjum</div>
-        <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
+        <div class="pkg-duration" data-i18n="dur_10_thu">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val">$2 500</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 800</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 700</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_sngl">1 kishilik (sngl)</span><span class="price-val">$2 500</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_dbl">2 kishilik (dbl)</span><span class="price-val">$1 800</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_trpl">3 kishilik (trpl)</span><span class="price-val">$1 700</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
-            <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>
+            <div class="hotel-meta" data-i18n="meta_bosphorus">4 kecha · Madina · 2 mahal shved stoli</div>
           </div>
         </div>
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Anjum Hotel</div>
-            <div class="hotel-meta">5 kecha · Makka · 2 mahal shved stoli</div>
+            <div class="hotel-meta" data-i18n="meta_anjum_makka">5 kecha · Makka · 2 mahal shved stoli</div>
           </div>
         </div>
       </div>
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('anjum')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Video
+          <span data-i18n="btn_video">Video</span>
         </button>
         <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Anjum+Hotel+Makkah" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Xarita
+          <span data-i18n="btn_map">Xarita</span>
         </a>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        1 guruh · 25 ziyoratchi
+        <span data-i18n="grp_1_25">1 guruh · 25 ziyoratchi</span>
       </div>
     </div>
 
@@ -1306,42 +1351,42 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-header">
         <div class="pkg-badge badge-comfort">◆ Saja · 10</div>
         <div class="pkg-name">Saja</div>
-        <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
+        <div class="pkg-duration" data-i18n="dur_10_thu">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices">
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 400</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 300</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 200</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_dbl">2 kishilik (dbl)</span><span class="price-val">$1 400</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_trpl">3 kishilik (trpl)</span><span class="price-val">$1 300</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_quad">4 kishilik (quad)</span><span class="price-val">$1 200</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Saja Al Madinah</div>
-            <div class="hotel-meta">4 kecha · Madina · 3 mahal ovqat</div>
+            <div class="hotel-meta" data-i18n="meta_saja_madina">4 kecha · Madina · 3 mahal ovqat</div>
           </div>
         </div>
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Taj Park Hotel</div>
-            <div class="hotel-meta">5 kecha · Makka · 3 mahal ovqat</div>
+            <div class="hotel-meta" data-i18n="meta_3meal_makka">5 kecha · Makka · 3 mahal ovqat</div>
           </div>
         </div>
       </div>
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('saja')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Video
+          <span data-i18n="btn_video">Video</span>
         </button>
         <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Saja+Al+Madinah+Hotel" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Xarita
+          <span data-i18n="btn_map">Xarita</span>
         </a>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        4 guruh · 50 ziyoratchi
+        <span data-i18n="grp_4_50">4 guruh · 50 ziyoratchi</span>
       </div>
     </div>
 
@@ -1350,35 +1395,35 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-header">
         <div class="pkg-badge badge-taj">◈ Taj · 13</div>
         <div class="pkg-name">Taj</div>
-        <div class="pkg-duration">13 kun / 12 kecha · Shanba jo'naydi</div>
+        <div class="pkg-duration" data-i18n="dur_13_sat">13 kun / 12 kecha · Shanba jo'naydi</div>
       </div>
       <div class="card-prices">
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 300</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 200</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 150</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_dbl">2 kishilik (dbl)</span><span class="price-val">$1 300</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_trpl">3 kishilik (trpl)</span><span class="price-val">$1 200</span></div>
+        <div class="price-row"><span class="price-label" data-i18n="price_quad">4 kishilik (quad)</span><span class="price-val">$1 150</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Hawada Hotel</div>
-            <div class="hotel-meta">1 kecha · 1 mahal ovqat</div>
+            <div class="hotel-meta" data-i18n="meta_hawada">1 kecha · 1 mahal ovqat</div>
           </div>
         </div>
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Taj Park Hotel</div>
-            <div class="hotel-meta">8 kecha · Makka · 3 mahal ovqat</div>
+            <div class="hotel-meta" data-i18n="meta_taj_makka">8 kecha · Makka · 3 mahal ovqat</div>
           </div>
         </div>
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Grand Al Shahba Hotel</div>
-            <div class="hotel-meta">3 kecha · 3 mahal ovqat</div>
+            <div class="hotel-meta" data-i18n="meta_shahba">3 kecha · 3 mahal ovqat</div>
             <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
-              Poyezd xizmati: 2 ta guruh uchun mavjud (+50$ qo'shiladi)
+              <span data-i18n="badge_train">Poyezd xizmati: 2 ta guruh uchun mavjud (+50$ qo'shiladi)</span>
             </div>
           </div>
         </div>
@@ -1386,17 +1431,17 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('taj')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Video
+          <span data-i18n="btn_video">Video</span>
         </button>
         <a class="map-btn" href="https://maps.app.goo.gl/aLbay8D32epyVonV7" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Xarita
+          <span data-i18n="btn_map">Xarita</span>
         </a>
       </div>
       <div class="card-footer" style="display: block; padding: 12px 24px;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-              6 guruh · 50 ziyoratchi
+              <span data-i18n="grp_6_50">6 guruh · 50 ziyoratchi</span>
           </div>
       </div>
     </div>
@@ -1414,12 +1459,12 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 
     <!-- Schedule -->
   <div class="schedule-section">
-    <div class="section-title">Jo'nаsh sanаlari</div>
-    <div class="section-subtitle">Qulay sanani tanlang</div>
+    <div class="section-title" data-i18n="sched_title">Jo'nаsh sanаlari</div>
+    <div class="section-subtitle" data-i18n="sched_sub">Qulay sanani tanlang</div>
 
     <div class="tabs">
-      <button class="tab-btn active" onclick="showTab('payshanba', this)">Payshanba — Swissotel ·  Jumeirah · Makkah Towers · Anjum · Saja</button>
-      <button class="tab-btn" onclick="showTab('shanba', this)">Shanba — Taj</button>
+      <button class="tab-btn active" onclick="showTab('payshanba', this)" data-i18n="tab_thu">Payshanba — Swissotel · Jumeirah · Makkah Towers · Anjum · Saja</button>
+      <button class="tab-btn" onclick="showTab('shanba', this)" data-i18n="tab_sat">Shanba — Taj</button>
     </div>
 
     <div id="payshanba" class="dates-grid">
@@ -1458,37 +1503,37 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 
   <!-- Flights -->
   <div class="flights-section">
-    <div style="font-family:'Playfair Display',serif;font-size:24px;color:white;font-weight:400;">Parvoz jadvali</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;">CentrumAir · Airbus A330-300</div>
+    <div style="font-family:'Playfair Display',serif;font-size:24px;color:white;font-weight:400;" data-i18n="flights_title">Parvoz jadvali</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;" data-i18n="flights_sub">CentrumAir · Airbus A330-300</div>
 
     <div class="flights-grid">
       <div class="flight-card">
-        <div class="flight-pkg-name">Swissotel ·  Jumeirah · Makkah Towers · Anjum · Saja paketlari</div>
+        <div class="flight-pkg-name" data-i18n="flight_pkg_thu">Swissotel · Jumeirah · Makkah Towers · Anjum · Saja paketlari</div>
         <div class="flight-route">
-          <div><div class="flight-city">Toshkent</div><div class="flight-time">11:00</div></div>
+          <div><div class="flight-city" data-i18n="city_toshkent">Toshkent</div><div class="flight-time">11:00</div></div>
           <div class="flight-arrow">✈</div>
-          <div style="text-align:right"><div class="flight-city">Madina</div><div class="flight-time">16:20</div></div>
+          <div style="text-align:right"><div class="flight-city" data-i18n="city_madina">Madina</div><div class="flight-time">16:20</div></div>
         </div>
         <div style="height:1px;background:rgba(255,255,255,0.08);margin:14px 0;"></div>
         <div class="flight-route">
-          <div><div class="flight-city">Jidda</div><div class="flight-time">12:20</div></div>
+          <div><div class="flight-city" data-i18n="city_jidda">Jidda</div><div class="flight-time">12:20</div></div>
           <div class="flight-arrow">✈</div>
-          <div style="text-align:right"><div class="flight-city">Toshkent</div><div class="flight-time">20:40</div></div>
+          <div style="text-align:right"><div class="flight-city" data-i18n="city_toshkent">Toshkent</div><div class="flight-time">20:40</div></div>
         </div>
       </div>
 
       <div class="flight-card">
-        <div class="flight-pkg-name">Taj paketi</div>
+        <div class="flight-pkg-name" data-i18n="flight_pkg_sat">Taj paketi</div>
         <div class="flight-route">
-          <div><div class="flight-city">Toshkent</div><div class="flight-time">05:20</div></div>
+          <div><div class="flight-city" data-i18n="city_toshkent">Toshkent</div><div class="flight-time">05:20</div></div>
           <div class="flight-arrow">✈</div>
-          <div style="text-align:right"><div class="flight-city">Jidda</div><div class="flight-time">10:40</div></div>
+          <div style="text-align:right"><div class="flight-city" data-i18n="city_jidda">Jidda</div><div class="flight-time">10:40</div></div>
         </div>
         <div style="height:1px;background:rgba(255,255,255,0.08);margin:14px 0;"></div>
         <div class="flight-route">
-          <div><div class="flight-city">Madina</div><div class="flight-time">18:00</div></div>
+          <div><div class="flight-city" data-i18n="city_madina">Madina</div><div class="flight-time">18:00</div></div>
           <div class="flight-arrow">✈</div>
-          <div style="text-align:right"><div class="flight-city">Toshkent</div><div class="flight-time">02:20</div></div>
+          <div style="text-align:right"><div class="flight-city" data-i18n="city_toshkent">Toshkent</div><div class="flight-time">02:20</div></div>
         </div>
       </div>
     </div>
@@ -1499,7 +1544,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     <div class="weather-item" id="madinah-weather">
         <i class="fas fa-mosque"></i>
         <div class="weather-info">
-            <span class="city">Madina</span>
+            <span class="city" data-i18n="city_madina">Madina</span>
             <span class="temp">--°C</span>
             <span class="feels">--</span>
             <span class="condition">--</span>
@@ -1510,7 +1555,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     <div class="weather-item" id="makkah-weather">
         <i class="fas fa-kaaba"></i>
         <div class="weather-info">
-            <span class="city">Makka</span>
+            <span class="city" data-i18n="city_makka">Makka</span>
             <span class="temp">--°C</span>
             <span class="feels">--</span>
             <span class="condition">--</span>
@@ -1543,13 +1588,13 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 <!-- FAQ -->
 <div class="main" style="padding-top:0;">
   <div class="faq-section">
-    <div class="section-title">Tez-tez so'raladigan savollar</div>
-    <div class="section-subtitle">Kerakli javobni topa olmadingizmi? Telegram orqali murojaat qiling</div>
+    <div class="section-title" data-i18n="faq_title">Tez-tez so'raladigan savollar</div>
+    <div class="section-subtitle" data-i18n="faq_sub">Kerakli javobni topa olmadingizmi? Telegram orqali murojaat qiling</div>
     <div class="faq-list">
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Mehmonxonalar Haramga qanchalik yaqin?
+          <span data-i18n="faq_q1">Mehmonxonalar Haramga qanchalik yaqin?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
@@ -1592,24 +1637,24 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Bron qilish uchun qancha oldindan murojaat qilish kerak?
+          <span data-i18n="faq_q2">Bron qilish uchun qancha oldindan murojaat qilish kerak?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Jo'nash sanasidan kamida 30–45 kun oldin murojaat qilish tavsiya etiladi. Erta bron qilgan hollarda o'rin kafolatlangan bo'ladi, chunki guruhlar cheklangan (25–50 kishi).</div>
+        <div class="faq-a" data-i18n="faq_a2">Jo'nash sanasidan kamida 30–45 kun oldin murojaat qilish tavsiya etiladi. Erta bron qilgan hollarda o'rin kafolatlangan bo'ladi, chunki guruhlar cheklangan (25–50 kishi).</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          To'lov tartibi qanday?
+          <span data-i18n="faq_q3">To'lov tartibi qanday?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Bron qilish paytida 30% avans to'lov qilinadi, qolgan 70% jo'nashdan 14 kun oldin to'lanadi. Naqd pul va bank o'tkazmasi qabul qilinadi.</div>
+        <div class="faq-a" data-i18n="faq_a3">Bron qilish paytida 30% avans to'lov qilinadi, qolgan 70% jo'nashdan 14 kun oldin to'lanadi. Naqd pul va bank o'tkazmasi qabul qilinadi.</div>
       </div>
 
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Bolalar uchun alohida narx bormi?
+          <span data-i18n="faq_q4">Bolalar uchun alohida narx bormi?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
@@ -1639,10 +1684,10 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          To'lovni bo'lib to'lash mumkinmi?
+          <span data-i18n="faq_q5">To'lovni bo'lib to'lash mumkinmi?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Ha, mumkin. Jo'nab ketishdan 14 kun oldin to'liq (100%) to'lov bo'lishi shart — ungacha bemalol bo'lib to'lash mumkin.</div>
+        <div class="faq-a" data-i18n="faq_a5">Ha, mumkin. Jo'nab ketishdan 14 kun oldin to'liq (100%) to'lov bo'lishi shart — ungacha bemalol bo'lib to'lash mumkin.</div>
       </div>
 
     </div>
@@ -1650,7 +1695,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 </div>
 
 <div class="footer">
-  <strong>Etihad paketlari</strong> · Umra Mavsumi 2026 · Barcha narxlar kishi boshiga ko'rsatilgan
+  <span data-i18n="footer"><strong>Etihad paketlari</strong> · Umra Mavsumi 2026 · Barcha narxlar kishi boshiga ko'rsatilgan</span>
 </div>
 
 <script>
@@ -1820,11 +1865,6 @@ const photoUrls = [
   'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u3_pljsb3.png',
   'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u4_igtunq.png',
   'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u5_p7ucrz.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u6_mvgihs.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u7_j1vdkv.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039323/u8_gs6yuf.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039322/u9_n6lek2.png',
-  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039327/u10_lewrkm.png',
 ];
 let currentPhoto = 0;
 
@@ -1904,6 +1944,129 @@ async function updateWeather() {
 
 document.addEventListener('DOMContentLoaded', updateWeather);
 
+
+// ─── i18n ────────────────────────────────────────────
+const translations = {
+  uz: {
+    hero_label:      "Etihad · Umra Mavsumi 2026",
+    hero_h1:         "Sharafli yo'lda <span>sharafli xizmat</span>",
+    hero_sub:        "Etihad umra paketlari — Iyun · Oktyabr 2026",
+    countdown_title: "Navbatdagi guruh uchishiga qoldi:",
+    time_kun: "Kun", time_soat: "Soat", time_min: "Min", time_sek: "Sek",
+    pkg_title: "Umra paketlari",
+    pkg_sub:   "Etihad umra paketlari — ishonchli xizmat haqida qayg'uradiganlar uchun",
+    dur_10_thu: "10 kun / 9 kecha · Payshanba jo'naydi",
+    dur_13_sat: "13 kun / 12 kecha · Shanba jo'naydi",
+    price_sngl: "1 kishilik (sngl)", price_dbl: "2 kishilik (dbl)",
+    price_trpl: "3 kishilik (trpl)", price_quad: "4 kishilik (quad)",
+    btn_video: "Video", btn_map: "Xarita",
+    fb_luggage: "Yuk", fb_handbag: "Qo'l yuki",
+    fb_transfer: "<strong>Tez yurar poezd</strong> bilan transfer",
+    city_toshkent: "Toshkent", city_madina: "Madina", city_jidda: "Jidda", city_makka: "Makka",
+    badge_2meal_160: "2 mahal ovqat: +160$", badge_2meal_200: "2 mahal ovqat: +200$",
+    badge_train: "Poyezd xizmati: 2 ta guruh uchun mavjud (+50$ qo'shiladi)",
+    meta_bosphorus:  "4 kecha · Madina · 2 mahal shved stoli",
+    meta_5n_1shved:  "5 kecha · Makka · 1 mahal shved stoli",
+    meta_anjum_makka:"5 kecha · Makka · 2 mahal shved stoli",
+    meta_saja_madina:"4 kecha · Madina · 3 mahal ovqat",
+    meta_3meal_makka:"5 kecha · Makka · 3 mahal ovqat",
+    meta_hawada:     "1 kecha · 1 mahal ovqat",
+    meta_taj_makka:  "8 kecha · Makka · 3 mahal ovqat",
+    meta_shahba:     "3 kecha · 3 mahal ovqat",
+    grp_1_25: "1 guruh · 25 ziyoratchi",
+    grp_4_50: "4 guruh · 50 ziyoratchi",
+    grp_6_50: "6 guruh · 50 ziyoratchi",
+    sched_title: "Jo'nash sanalari", sched_sub: "Qulay sanani tanlang",
+    tab_thu: "Payshanba — Swissotel · Jumeirah · Makkah Towers · Anjum · Saja",
+    tab_sat: "Shanba — Taj",
+    flights_title: "Parvoz jadvali", flights_sub: "CentrumAir · Airbus A330-300",
+    flight_pkg_thu: "Swissotel · Jumeirah · Makkah Towers · Anjum · Saja paketlari",
+    flight_pkg_sat: "Taj paketi",
+    faq_title: "Tez-tez so'raladigan savollar",
+    faq_sub:   "Kerakli javobni topa olmadingizmi? Telegram orqali murojaat qiling",
+    faq_q1: "Mehmonxonalar Haramga qanchalik yaqin?",
+    faq_q2: "Bron qilish uchun qancha oldindan murojaat qilish kerak?",
+    faq_q3: "To'lov tartibi qanday?",
+    faq_q4: "Bolalar uchun alohida narx bormi?",
+    faq_q5: "To'lovni bo'lib to'lash mumkinmi?",
+    faq_a2: "Jo'nash sanasidan kamida 30–45 kun oldin murojaat qilish tavsiya etiladi. Erta bron qilgan hollarda o'rin kafolatlangan bo'ladi, chunki guruhlar cheklangan (25–50 kishi).",
+    faq_a3: "Bron qilish paytida 30% avans to'lov qilinadi, qolgan 70% jo'nashdan 14 kun oldin to'lanadi. Naqd pul va bank o'tkazmasi qabul qilinadi.",
+    faq_a5: "Ha, mumkin. Jo'nab ketishdan 14 kun oldin to'liq (100%) to'lov bo'lishi shart — ungacha bemalol bo'lib to'lash mumkin.",
+    footer: "<strong>Etihad paketlari</strong> · Umra Mavsumi 2026 · Barcha narxlar kishi boshiga ko'rsatilgan",
+  },
+  ru: {
+    hero_label:      "Etihad · Сезон Умры 2026",
+    hero_h1:         "Благородный путь — <span>благородный сервис</span>",
+    hero_sub:        "Пакеты умры Etihad — Июнь · Октябрь 2026",
+    countdown_title: "До вылета следующей группы:",
+    time_kun: "Дней", time_soat: "Часов", time_min: "Мин", time_sek: "Сек",
+    pkg_title: "Пакеты Умры",
+    pkg_sub:   "Пакеты умры Etihad — для тех, кто ценит надёжный сервис",
+    dur_10_thu: "10 дней / 9 ночей · Вылет в четверг",
+    dur_13_sat: "13 дней / 12 ночей · Вылет в субботу",
+    price_sngl: "1-местный (одноместный)", price_dbl: "2-местный (двухместный)",
+    price_trpl: "3-местный (трёхместный)", price_quad: "4-местный (четырёхместный)",
+    btn_video: "Видео", btn_map: "Карта",
+    fb_luggage: "Багаж", fb_handbag: "Ручная кладь",
+    fb_transfer: "<strong>Скоростной поезд</strong> — трансфер",
+    city_toshkent: "Ташкент", city_madina: "Медина", city_jidda: "Джидда", city_makka: "Мекка",
+    badge_2meal_160: "2-разовое питание: +160$", badge_2meal_200: "2-разовое питание: +200$",
+    badge_train: "Поезд: доступно для 2 групп (+50$)",
+    meta_bosphorus:  "4 ночи · Медина · шведский стол 2 раза",
+    meta_5n_1shved:  "5 ночей · Мекка · шведский стол 1 раз",
+    meta_anjum_makka:"5 ночей · Мекка · шведский стол 2 раза",
+    meta_saja_madina:"4 ночи · Медина · 3-разовое питание",
+    meta_3meal_makka:"5 ночей · Мекка · 3-разовое питание",
+    meta_hawada:     "1 ночь · 1-разовое питание",
+    meta_taj_makka:  "8 ночей · Мекка · 3-разовое питание",
+    meta_shahba:     "3 ночи · 3-разовое питание",
+    grp_1_25: "1 группа · 25 паломников",
+    grp_4_50: "4 группы · 50 паломников",
+    grp_6_50: "6 групп · 50 паломников",
+    sched_title: "Даты вылета", sched_sub: "Выберите удобную дату",
+    tab_thu: "Четверг — Swissotel · Jumeirah · Makkah Towers · Anjum · Saja",
+    tab_sat: "Суббота — Taj",
+    flights_title: "Расписание рейсов", flights_sub: "CentrumAir · Airbus A330-300",
+    flight_pkg_thu: "Пакеты Swissotel · Jumeirah · Makkah Towers · Anjum · Saja",
+    flight_pkg_sat: "Пакет Taj",
+    faq_title: "Часто задаваемые вопросы",
+    faq_sub:   "Не нашли нужный ответ? Обратитесь через Telegram",
+    faq_q1: "Насколько отели близко к Харам?",
+    faq_q2: "За сколько дней нужно обращаться для бронирования?",
+    faq_q3: "Каков порядок оплаты?",
+    faq_q4: "Есть ли отдельные цены для детей?",
+    faq_q5: "Можно ли оплатить в рассрочку?",
+    faq_a2: "Рекомендуется обращаться не менее чем за 30–45 дней до вылета. При раннем бронировании место гарантировано, так как группы ограничены (25–50 человек).",
+    faq_a3: "При бронировании вносится аванс 30%, оставшиеся 70% оплачиваются за 14 дней до вылета. Принимается наличный расчёт и банковский перевод.",
+    faq_a5: "Да, можно. За 14 дней до вылета должна быть внесена полная сумма (100%) — до этого можно платить частями.",
+    footer: "<strong>Пакеты Etihad</strong> · Сезон Умры 2026 · Все цены указаны на человека",
+  }
+};
+
+let currentLang = 'uz';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.body.classList.toggle('lang-ru', lang === 'ru');
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  // Oy nomlarini almashtirish
+  const mUz = ['Iyun','Iyul','Avg','Sep','Okt'];
+  const mRu = ['Июн','Июл','Авг','Сен','Окт'];
+  const mSrc = lang === 'ru' ? mUz : mRu;
+  const mDst = lang === 'ru' ? mRu : mUz;
+  document.querySelectorAll('.dep, .arr').forEach(el => {
+    let txt = el.textContent;
+    mSrc.forEach((m, i) => { txt = txt.replace(m, mDst[i]); });
+    el.textContent = txt;
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+}
 
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');

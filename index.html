@@ -931,6 +931,75 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     .weather-item .temp { font-size: 17px; }
 }
 
+/* ── Animations ── */
+
+/* Hero entrance */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.hero-label { animation: fadeUp 0.7s ease 0.1s both; }
+.hero h1    { animation: fadeUp 0.7s ease 0.3s both; }
+.hero-sub   { animation: fadeUp 0.7s ease 0.5s both; }
+.hero-line  { animation: fadeIn 0.8s ease 0.7s both; }
+.countdown-section { animation: fadeUp 0.7s ease 0.8s both; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.delay-1 { transition-delay: 0.08s; }
+.delay-2 { transition-delay: 0.16s; }
+.delay-3 { transition-delay: 0.24s; }
+.delay-4 { transition-delay: 0.32s; }
+.delay-5 { transition-delay: 0.40s; }
+.delay-6 { transition-delay: 0.48s; }
+
+/* Card hover lift */
+.pkg-card {
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.3s ease !important;
+}
+.pkg-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 56px rgba(15,46,37,0.14) !important;
+}
+
+/* Date chip hover */
+.date-chip {
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease !important;
+}
+.date-chip:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: var(--gold-pale) !important;
+  border-color: var(--gold) !important;
+  cursor: default;
+}
+
 /* FAQ */
 .faq-section { margin-bottom: 64px; }
 .faq-list { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
@@ -995,21 +1064,21 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 }
 
 .faq-a {
-  max-height: 0;
   overflow: hidden;
+  max-height: 0;
   opacity: 0;
-  padding: 0 24px;
+  transition: max-height 0.44s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.3s ease;
+}
+.faq-item.open .faq-a {
+  opacity: 1;
+}
+.faq-a-inner {
+  padding: 16px 24px 22px;
   font-size: 13.5px;
   color: var(--text-muted);
   line-height: 1.75;
-  border-top: 0px solid var(--border);
-  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease, border-top-width 0.3s ease;
-}
-.faq-item.open .faq-a {
-  max-height: 600px;
-  opacity: 1;
-  padding: 16px 24px 22px;
-  border-top-width: 1px;
+  border-top: 1px solid var(--border);
 }
 </style>
 </head>
@@ -1099,13 +1168,13 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 <div class="main">
 
   <!-- Packages -->
-  <div class="section-title">Umra paketlari</div>
-  <div class="section-subtitle">Etihad umra paketlari — ishonchli xizmat haqida qayg'uradiganlar uchun</div>
+  <div class="section-title reveal-left">Umra paketlari</div>
+  <div class="section-subtitle reveal-left delay-1">Etihad umra paketlari — ishonchli xizmat haqida qayg'uradiganlar uchun</div>
 
   <div class="cards-grid">
 
     <!-- PREMIUM -->
-    <div class="pkg-card featured">
+    <div class="pkg-card featured reveal delay-1">
       <div class="card-header">
         <div class="pkg-badge badge-premium">⭐ Swissotel · 10</div>
         <div class="pkg-name">Swissotel</div>
@@ -1156,7 +1225,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
     <!-- Jumeirah -->
-    <div class="pkg-card">
+    <div class="pkg-card reveal delay-2">
       <div class="card-header">
         <div class="pkg-badge badge-jumeirah">❖ Jumeirah · 10</div>
         <div class="pkg-name">Jumeirah</div>
@@ -1207,7 +1276,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
         <!-- Makkah towers -->
-    <div class="pkg-card">
+    <div class="pkg-card reveal delay-3">
       <div class="card-header">
         <div class="pkg-badge badge-towers">✧ Makkah Towers · 10</div>
         <div class="pkg-name">Makkah Towers</div>
@@ -1258,7 +1327,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
     <!-- ANJUM -->
-    <div class="pkg-card">
+    <div class="pkg-card reveal delay-4">
       <div class="card-header">
         <div class="pkg-badge badge-lux">✦ Anjum · 10</div>
         <div class="pkg-name">Anjum</div>
@@ -1302,7 +1371,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
     <!-- COMFORT -->
-    <div class="pkg-card">
+    <div class="pkg-card reveal delay-5">
       <div class="card-header">
         <div class="pkg-badge badge-comfort">◆ Saja · 10</div>
         <div class="pkg-name">Saja</div>
@@ -1346,7 +1415,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
     <!-- TAJ -->
-    <div class="pkg-card">
+    <div class="pkg-card reveal delay-6">
       <div class="card-header">
         <div class="pkg-badge badge-taj">◈ Taj · 13</div>
         <div class="pkg-name">Taj</div>
@@ -1414,7 +1483,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 
     <!-- Schedule -->
   <div class="schedule-section">
-    <div class="section-title">Jo'nаsh sanаlari</div>
+    <div class="section-title reveal-left">Jo'nаsh sanаlari</div>
     <div class="section-subtitle">Qulay sanani tanlang</div>
 
     <div class="tabs">
@@ -1543,8 +1612,8 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 <!-- FAQ -->
 <div class="main" style="padding-top:0;">
   <div class="faq-section">
-    <div class="section-title">Tez-tez so'raladigan savollar</div>
-    <div class="section-subtitle">Kerakli javobni topa olmadingizmi? Telegram orqali murojaat qiling</div>
+    <div class="section-title reveal-left">Tez-tez so'raladigan savollar</div>
+    <div class="section-subtitle reveal-left delay-1">Kerakli javobni topa olmadingizmi? Telegram orqali murojaat qiling</div>
     <div class="faq-list">
 
       <div class="faq-item">
@@ -1899,11 +1968,38 @@ async function updateWeather() {
 
 document.addEventListener('DOMContentLoaded', updateWeather);
 
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => revealObserver.observe(el));
+
+document.querySelectorAll('.faq-a').forEach(el => {
+  const inner = document.createElement('div');
+  inner.className = 'faq-a-inner';
+  while (el.firstChild) inner.appendChild(el.firstChild);
+  el.appendChild(inner);
+});
+
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => {
+    el.classList.remove('open');
+    el.querySelector('.faq-a').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    const answer = item.querySelector('.faq-a');
+    const inner = answer.querySelector('.faq-a-inner');
+    answer.style.maxHeight = inner.scrollHeight + 'px';
+  }
 }
 </script>
 </body>

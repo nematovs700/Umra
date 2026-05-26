@@ -370,14 +370,36 @@
     text-decoration: none;
   }
   .video-btn {
-    background: var(--dark);
+    background: linear-gradient(155deg, var(--dark-3) 0%, var(--dark) 100%);
     color: var(--gold-light);
-    border: 1px solid rgba(212,175,55,0.3);
+    border: 1px solid rgba(212,175,55,0.28);
+    border-radius: 14px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 14px;
   }
   .video-btn:hover {
-    background: var(--gold);
-    color: var(--dark);
+    background: linear-gradient(155deg, var(--dark-2), var(--dark));
+    color: var(--gold);
+    border-color: rgba(212,175,55,0.65);
+    box-shadow: 0 4px 18px rgba(212,175,55,0.18);
+  }
+  .video-play-ring {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(212,175,55,0.12);
+    border: 1.5px solid rgba(212,175,55,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2px;
+    transition: all 0.25s;
+  }
+  .video-btn:hover .video-play-ring {
+    background: rgba(212,175,55,0.22);
     border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(212,175,55,0.3);
   }
   .map-btn {
     background: var(--green-light);
@@ -388,6 +410,22 @@
     background: var(--green);
     color: #fff;
     border-color: var(--green);
+  }
+  .map-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+  .map-btn-madina {
+    background: var(--blue-light);
+    color: var(--blue);
+    border-color: rgba(40,90,116,0.2);
+  }
+  .map-btn-madina:hover {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
   }
   .video-btn svg, .map-btn svg { flex-shrink: 0; }
 
@@ -1210,13 +1248,21 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       </div>
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('swissotel')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <div class="video-play-ring">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <span>Video</span>
         </button>
-        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Swissotel+Makkah" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <span>Xarita</span>
-        </a>
+        <div class="map-btns">
+          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Swissotel+Makkah" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Makka</span>
+          </a>
+          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Madina</span>
+          </a>
+        </div>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
@@ -1261,13 +1307,21 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       </div>
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('jumeirah')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <div class="video-play-ring">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <span>Video</span>
         </button>
-        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Jumeirah+Jabal+Omar+Makkah" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <span>Xarita</span>
-        </a>
+        <div class="map-btns">
+          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Jumeirah+Jabal+Omar+Makkah" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Makka</span>
+          </a>
+          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Madina</span>
+          </a>
+        </div>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
@@ -1312,13 +1366,21 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       </div>
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('mtowers')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <div class="video-play-ring">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <span>Video</span>
         </button>
-        <a class="map-btn" href="https://maps.app.goo.gl/pL6Wkp3Z8aRxjMuW9" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <span>Xarita</span>
-        </a>
+        <div class="map-btns">
+          <a class="map-btn" href="https://maps.app.goo.gl/pL6Wkp3Z8aRxjMuW9" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Makka</span>
+          </a>
+          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Madina</span>
+          </a>
+        </div>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
@@ -1356,13 +1418,21 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       </div>
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('anjum')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <div class="video-play-ring">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <span>Video</span>
         </button>
-        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Anjum+Hotel+Makkah" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <span>Xarita</span>
-        </a>
+        <div class="map-btns">
+          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Anjum+Hotel+Makkah" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Makka</span>
+          </a>
+          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Madina</span>
+          </a>
+        </div>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
@@ -1400,13 +1470,21 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       </div>
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('saja')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <div class="video-play-ring">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <span>Video</span>
         </button>
-        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Saja+Al+Madinah+Hotel" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <span>Xarita</span>
-        </a>
+        <div class="map-btns">
+          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Taj+Park+Hotel+Makkah" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Makka</span>
+          </a>
+          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Saja+Al+Madinah+Hotel" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Madina</span>
+          </a>
+        </div>
       </div>
       <div class="card-footer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
@@ -1454,13 +1532,21 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       </div>
       <div class="card-actions">
         <button class="video-btn" onclick="openModal('taj')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <div class="video-play-ring">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <span>Video</span>
         </button>
-        <a class="map-btn" href="https://maps.app.goo.gl/aLbay8D32epyVonV7" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <span>Xarita</span>
-        </a>
+        <div class="map-btns">
+          <a class="map-btn" href="https://maps.app.goo.gl/aLbay8D32epyVonV7" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Makka</span>
+          </a>
+          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Grand+Al+Shahba+Hotel+Madinah" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Madina</span>
+          </a>
+        </div>
       </div>
       <div class="card-footer" style="display: block; padding: 12px 24px;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">

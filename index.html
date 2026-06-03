@@ -142,7 +142,7 @@
   }
 
   .pkg-card {
-    border: 1px solid var(--border);
+    border: 3px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
     background: #fff;
@@ -159,7 +159,7 @@
     transform: translateY(-6px);
     border-color: var(--gold);
     box-shadow:
-      0 0 0 1px var(--gold),
+      0 0 0 3px var(--gold),
       0 22px 60px rgba(15,46,37,0.18);
   }
 
@@ -1715,7 +1715,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     <div class="modal-video-wrap">
       <button class="vid-nav prev" id="vidPrev" onclick="changeVideo(-1)">‹</button>
       <video id="modalVideo" controls playsinline></video>
-      <img id="modalImage" style="width:100%;max-height:60vh;display:none;object-fit:contain;" />
+      <img id="modalImage" onclick="openFullImg(this.src)" style="width:100%;max-height:60vh;display:none;object-fit:contain;cursor:zoom-in;" />
       <button class="vid-nav next" id="vidNext" onclick="changeVideo(1)">›</button>
     </div>
     <div class="modal-thumbs" id="modalThumbs"></div>
@@ -2202,6 +2202,28 @@ function openPhoto(idx) {
 function closePhoto() {
   document.getElementById('photoModal').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+function openFullImg(src) {
+  const modal = document.getElementById('photoModal');
+  const img   = document.getElementById('photoImg');
+  const prev  = document.getElementById('photoPrev');
+  const next  = document.getElementById('photoNext');
+  const counter = document.getElementById('photoCounter');
+  img.src = src;
+  prev.style.display  = 'none';
+  next.style.display  = 'none';
+  counter.style.display = 'none';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  modal.onclick = function() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    prev.style.display  = '';
+    next.style.display  = '';
+    counter.style.display = '';
+    modal.onclick = function() { closePhoto(); };
+  };
 }
 
 function changePhoto(dir) {

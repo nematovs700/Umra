@@ -1193,31 +1193,28 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 </div>
 
 <div class="flight-bar">
-  <div class="flight-item">
+  <div class="flight-item" onclick="openModal('plane')" style="cursor:pointer; transition: opacity 0.2s;" onmouseenter="this.style.opacity='0.75'" onmouseleave="this.style.opacity='1'">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
   <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9L2 14v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16z"/>
   </svg>
   <strong>CentrumAir</strong> · Airbus A330-300
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.6; margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
 </div>
   <div class="flight-sep"></div>
-  <div class="flight-item">
+  <div class="flight-item" onclick="openModal('luggage')" style="cursor:pointer;transition:opacity 0.2s;" onmouseenter="this.style.opacity='0.75'" onmouseleave="this.style.opacity='1'">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
     <path d="M9 3c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v1h2c1.66 0 3 1.34 3 3v12c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h2V3zm2 1h2V3h-2v1zm-3 4v10h2V8H8zm6 0v10h2V8h-2z"/>
     </svg>
-    <span>Yuk</span>: <strong>30 kg</strong>
-  </div>
-  <div class="flight-item">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2h1a3 3 0 013 3v7a3 3 0 01-3 3H7a3 3 0 01-3-3v-7a3 3 0 013-3h1zm2 0h4V5h-4v2zm-1 4a1 1 0 000 2h6a1 1 0 100-2H9z"/>
-    </svg>
-    <span>Qo'l yuki</span>: <strong>8 kg</strong>
+    <span>Yuk</span>: <strong>30 kg</strong> · <span>Qo'l yuki</span>: <strong>8 kg</strong>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.6;margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
   </div>
   <div class="flight-sep"></div>
-  <div class="flight-item">
+  <div class="flight-item" onclick="openModal('train')" style="cursor:pointer;transition:opacity 0.2s;" onmouseenter="this.style.opacity='0.75'" onmouseleave="this.style.opacity='1'">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
   <path d="M12 2c-4.4 0-8 .4-8 4v7c0 2.2 1.8 4 4 4l-2 2v1h12v-1l-2-2c2.2 0 4-1.8 4-4V6c0-3.6-3.6-4-8-4zm-4 11a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm8 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm2-5H6V6h12v2z"/>
   </svg>
   <span><strong>Tez yurar poezd</strong> bilan transfer</span>
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.6;margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
 </div>
 </div>
 
@@ -1236,11 +1233,11 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-name">Swissotel</div>
         <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
-      <div class="card-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val">$2 700</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 900</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 700</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 600</span></div>
+      <div class="card-prices" id="swissotel-prices">
+        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val swiss-price" data-base="2700">$2 700</span></div>
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val swiss-price" data-base="1900">$1 900</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val swiss-price" data-base="1700">$1 700</span></div>
+        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val swiss-price" data-base="1600">$1 600</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1255,12 +1252,14 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
             <div>
                 <div class="hotel-name">Swissotel Makkah</div>
                 <div class="hotel-meta">5 kecha · Makka · 1 mahal shved stoli</div>
-                <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
-                    <span>2 mahal ovqat: +160$</span>
+                <div id="swiss-ovqat-badge" onclick="toggleOvqat('swiss')" style="display: inline-flex; align-items: center; gap: 5px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer; user-select: none; transition: all 0.2s;">
+                  <span id="swiss-ovqat-icon">☐</span>
+                  <span>🍽 2 mahal ovqat (Uzbek foods): +160$</span>
                 </div>
-                <div onclick="openPhoto(0)" style="display: inline-flex; align-items: center; gap: 4px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer;">
-                  📷 Uzbek Foods | Clock tower: +60$
-                </div> 
+                <div id="swiss-clock-badge" style="display: inline-flex; align-items: center; gap: 0; background: var(--gold-pale); color: var(--amber); font-size: 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); overflow: hidden; user-select: none;">
+                  <span onclick="toggleClock('swiss')" id="swiss-clock-icon" style="padding: 4px 8px; border-right: 1px dashed var(--gold); cursor: pointer; transition: all 0.2s; font-size: 13px;">☐</span>
+                  <span onclick="openPhoto(0)" style="padding: 4px 10px; cursor: pointer;">📷 Uzbek Foods | Clock tower: +60$</span>
+                </div>
             </div>
         </div>
       </div>
@@ -1295,18 +1294,18 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-name">Jumeirah</div>
         <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
-      <div class="card-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val">$2 700</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 900</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 700</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 600</span></div>
+      <div class="card-prices" id="jumeirah-prices">
+        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val jum-price" data-base="2700">$2 700</span></div>
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val jum-price" data-base="1900">$1 900</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val jum-price" data-base="1700">$1 700</span></div>
+        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val jum-price" data-base="1600">$1 600</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
-            <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>           
+            <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>
           </div>
         </div>
         <div class="hotel-item">
@@ -1314,11 +1313,13 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <div>
             <div class="hotel-name">Jumeirah Jabal Omar Makkah</div>
             <div class="hotel-meta">5 kecha · Makka · 1 mahal shved stoli</div>
-            <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
-              <span>2 mahal ovqat: +200$</span>
+            <div id="jum-ovqat-badge" onclick="toggleOvqat('jum')" style="display: inline-flex; align-items: center; gap: 5px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer; user-select: none; transition: all 0.2s;">
+              <span id="jum-ovqat-icon">☐</span>
+              <span>🍽 2 mahal ovqat (Uzbek foods): +200$</span>
             </div>
-            <div onclick="openPhoto(0)" style="display: inline-flex; align-items: center; gap: 4px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer;">
-              📷 Uzbek Foods | Clock tower: +60$
+            <div id="jum-clock-badge" style="display: inline-flex; align-items: center; gap: 0; background: var(--gold-pale); color: var(--amber); font-size: 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); overflow: hidden; user-select: none;">
+              <span onclick="toggleClock('jum')" id="jum-clock-icon" style="padding: 4px 8px; border-right: 1px dashed var(--gold); cursor: pointer; transition: all 0.2s; font-size: 13px;">☐</span>
+              <span onclick="openPhoto(0)" style="padding: 4px 10px; cursor: pointer;">📷 Uzbek Foods | Clock tower: +60$</span>
             </div>
           </div>
         </div>
@@ -1354,18 +1355,18 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-name">Makkah Towers</div>
         <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
-      <div class="card-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val">$2 500</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 800</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 600</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 500</span></div>
+      <div class="card-prices" id="mtowers-prices">
+        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val mt-price" data-base="2500">$2 500</span></div>
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val mt-price" data-base="1800">$1 800</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val mt-price" data-base="1600">$1 600</span></div>
+        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val mt-price" data-base="1500">$1 500</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
             <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
-            <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>           
+            <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>
           </div>
         </div>
         <div class="hotel-item">
@@ -1373,12 +1374,14 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <div>
             <div class="hotel-name">Makkah Towers</div>
             <div class="hotel-meta">5 kecha · Makka · 1 mahal shved stoli</div>
-            <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
-              <span>2 mahal ovqat: +160$</span>
+            <div id="mt-ovqat-badge" onclick="toggleOvqat('mt')" style="display: inline-flex; align-items: center; gap: 5px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer; user-select: none; transition: all 0.2s;">
+              <span id="mt-ovqat-icon">☐</span>
+              <span>🍽 2 mahal ovqat (Uzbek foods): +160$</span>
             </div>
-            <div onclick="openPhoto(0)" style="display: inline-flex; align-items: center; gap: 4px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer;">
-              📷 Uzbek Foods | Clock tower: +60$
-            </div>  
+            <div id="mt-clock-badge" style="display: inline-flex; align-items: center; gap: 0; background: var(--gold-pale); color: var(--amber); font-size: 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); overflow: hidden; user-select: none;">
+              <span onclick="toggleClock('mt')" id="mt-clock-icon" style="padding: 4px 8px; border-right: 1px dashed var(--gold); cursor: pointer; transition: all 0.2s; font-size: 13px;">☐</span>
+              <span onclick="openPhoto(0)" style="padding: 4px 10px; cursor: pointer;">📷 Uzbek Foods | Clock tower: +60$</span>
+            </div>
           </div>          
         </div>
       </div>
@@ -1517,10 +1520,10 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-name">Taj</div>
         <div class="pkg-duration">13 kun / 12 kecha · Shanba jo'naydi</div>
       </div>
-      <div class="card-prices">
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 300</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 200</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 150</span></div>
+      <div class="card-prices" id="taj-prices">
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val taj-price" data-base="1300">$1 300</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val taj-price" data-base="1200">$1 200</span></div>
+        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val taj-price" data-base="1150">$1 150</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1542,8 +1545,13 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <div>
             <div class="hotel-name">Grand Al Shahba Hotel</div>
             <div class="hotel-meta">3 kecha · 3 mahal ovqat</div>
-            <div style="display: inline-block; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-top: 5px; border: 1px dashed var(--gold);">
+            <div id="taj-poyezd-badge" onclick="togglePoyezd()" style="display: inline-flex; align-items: center; gap: 5px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer; user-select: none; transition: all 0.2s;">
+              <span id="taj-poyezd-icon">☐</span>
               <span>Poyezd xizmati: 2 ta guruh uchun mavjud (+50$ qo'shiladi)</span>
+            </div>
+            <div id="taj-chemodan-badge" onclick="toggleChemodan()" style="display: inline-flex; align-items: center; gap: 5px; background: var(--teal-light); color: var(--teal); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--teal); cursor: pointer; user-select: none; transition: all 0.2s;">
+              <span id="taj-chemodan-icon">☐</span>
+              <span>🧳 Chemodan to'liq paketi: +50$ qo'shiladi</span>
             </div>
           </div>
         </div>
@@ -1707,6 +1715,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     <div class="modal-video-wrap">
       <button class="vid-nav prev" id="vidPrev" onclick="changeVideo(-1)">‹</button>
       <video id="modalVideo" controls playsinline></video>
+      <img id="modalImage" style="width:100%;max-height:60vh;display:none;object-fit:contain;" />
       <button class="vid-nav next" id="vidNext" onclick="changeVideo(1)">›</button>
     </div>
     <div class="modal-thumbs" id="modalThumbs"></div>
@@ -1857,6 +1866,21 @@ const packageVideos = {
     { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035552/taj_oshxona_lbxoi3.mp4', label: 'Oshxona' },
     { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035657/alshahba_lfx0oa.mp4',    label: 'Grand Al Shahba Hotel' },
   ],
+  train: [
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780476827/Gemini_Generated_Image_7vk2xw7vk2xw7vk2_iubzfo.png', label: '🚄 Tez yurar poezd — 1' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780476394/hhr1_wjtugd.jpg',                                   label: '🚄 Tez yurar poezd — 2' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780476386/hhr_xkpzhi.webp',                                   label: '🚄 Tez yurar poezd — 3' },
+  ],
+  luggage: [
+    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780476039/IMG_4823_prjpeu.mov', label: '🧳 Yuk — 30 kg · Qo\'l yuki — 8 kg' },
+  ],
+  plane: [
+    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780472228/oni4toen2fzg37z7rlcx_urpyny.mp4',          label: '✈ CentrumAir · Video' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474859/b393d20b-1260-4ac1-881b-b8f486b3526e_qrxpos.jpg',  label: '🛩 Salon — 1' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474902/foto-salona-2-1024x768_znhx69.webp',       label: '🛩 Salon — 2' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474984/de2284ce-1b24-49ee-aaf5-808d17e6ea41_hxtqqv.jpg',  label: '🛩 Salon — 3' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780475386/8905280b-ab42-4fcd-8a66-659506cf72a1_rkb69a.jpg',  label: '🛩 Salon — 4' },
+  ],
 };
 
 const pkgNames = {
@@ -1865,7 +1889,10 @@ const pkgNames = {
   mtowers:   'Makkah Towers paketi',
   anjum:     'Anjum paketi',
   saja:      'Saja paketi',
+  train:     'Tez yurar poezd · Transfer',
   taj:       'Taj paketi',
+  plane:     'CentrumAir · Airbus A330-300',
+  luggage:   'Yuk va qo\'l yuki',
 };
 
 let currentVideos = [];
@@ -1880,13 +1907,30 @@ function openModal(pkg) {
   document.body.style.overflow = 'hidden';
 }
 
+function isImage(src) {
+  return /\.(jpg|jpeg|png|webp|gif)(\?|$)/i.test(src);
+}
+
 function renderModal() {
   const v = currentVideos[currentIdx];
   const videoEl = document.getElementById('modalVideo');
-  videoEl.src = v.src;
-  videoEl.load();
-  videoEl.play().catch(() => {});
+  const imgEl   = document.getElementById('modalImage');
   document.getElementById('modalLabel').textContent = v.label;
+
+  if (isImage(v.src)) {
+    videoEl.pause();
+    videoEl.src = '';
+    videoEl.style.display = 'none';
+    imgEl.src = v.src;
+    imgEl.style.display = 'block';
+  } else {
+    imgEl.style.display = 'none';
+    imgEl.src = '';
+    videoEl.style.display = 'block';
+    videoEl.src = v.src;
+    videoEl.load();
+    videoEl.play().catch(() => {});
+  }
 
   document.getElementById('vidPrev').classList.toggle('hidden', currentVideos.length <= 1);
   document.getElementById('vidNext').classList.toggle('hidden', currentVideos.length <= 1);
@@ -1964,6 +2008,123 @@ function showTab(id, btn) {
   document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
   document.getElementById(id).classList.remove('hidden');
   btn.classList.add('active');
+}
+
+const ovqatState = { swiss: false, jum: false, mt: false };
+const clockState = { swiss: false, jum: false, mt: false };
+const ovqatExtra = { swiss: 160, jum: 200, mt: 160 };
+
+function recalcPrices(key) {
+  const extra = (ovqatState[key] ? ovqatExtra[key] : 0) + (clockState[key] ? 60 : 0);
+  document.querySelectorAll('.' + key + '-price').forEach(el => {
+    const base = parseInt(el.dataset.base);
+    if (extra === 0) {
+      el.textContent = '$' + fmtNum(base);
+    } else {
+      el.innerHTML =
+        '<span style="color:var(--text-muted);text-decoration:line-through;font-size:13px;font-weight:400">$' + fmtNum(base) + '</span>' +
+        ' <span style="color:var(--amber);font-size:12px">+' + extra + '</span>' +
+        ' = <strong style="color:var(--amber)">$' + fmtNum(base + extra) + '</strong>';
+    }
+  });
+}
+
+function setOvqatUI(key, active) {
+  const badge = document.getElementById(key + '-ovqat-badge');
+  const icon  = document.getElementById(key + '-ovqat-icon');
+  badge.style.background = active ? 'var(--amber)' : 'var(--gold-pale)';
+  badge.style.color      = active ? '#fff' : 'var(--amber)';
+  icon.textContent       = active ? '☑' : '☐';
+}
+
+function setClockUI(key, active) {
+  const badge = document.getElementById(key + '-clock-badge');
+  const icon  = document.getElementById(key + '-clock-icon');
+  icon.textContent       = active ? '☑' : '☐';
+  badge.style.background = active ? 'var(--amber)' : 'var(--gold-pale)';
+  badge.style.color      = active ? '#fff' : 'var(--amber)';
+  badge.style.borderColor = active ? 'var(--amber)' : 'var(--gold)';
+  icon.style.background  = 'transparent';
+  icon.style.color       = 'inherit';
+}
+
+function toggleOvqat(key) {
+  const next = !ovqatState[key];
+  // o'zgarganda clock'ni o'chir
+  if (next && clockState[key]) {
+    clockState[key] = false;
+    setClockUI(key, false);
+  }
+  ovqatState[key] = next;
+  setOvqatUI(key, next);
+  recalcPrices(key);
+}
+
+function toggleClock(key) {
+  const next = !clockState[key];
+  // o'zgarganda ovqat'ni o'chir
+  if (next && ovqatState[key]) {
+    ovqatState[key] = false;
+    setOvqatUI(key, false);
+  }
+  clockState[key] = next;
+  setClockUI(key, next);
+  recalcPrices(key);
+}
+
+function fmtNum(n) {
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+let tajChemoadanActive = false;
+let tajPoyezdActive = false;
+
+function updateTajPrices() {
+  const extra = (tajChemoadanActive ? 50 : 0) + (tajPoyezdActive ? 50 : 0);
+  const prices = document.querySelectorAll('.taj-price');
+  prices.forEach(el => {
+    const base = parseInt(el.dataset.base);
+    if (extra === 0) {
+      el.textContent = '$' + base.toLocaleString('en').replace(',', ' ');
+    } else {
+      const total = base + extra;
+      const extraLabel = extra === 100 ? '+100' : '+50';
+      const color = tajChemoadanActive && tajPoyezdActive ? 'var(--amber)' : tajChemoadanActive ? 'var(--teal)' : 'var(--amber)';
+      el.innerHTML = '<span style="color:var(--text-muted);text-decoration:line-through;font-size:13px;font-weight:400">$' + base.toLocaleString('en').replace(',', ' ') + '</span> <span style="color:' + color + ';font-size:12px">' + extraLabel + '</span> = <strong style="color:' + color + '">$' + total.toLocaleString('en').replace(',', ' ') + '</strong>';
+    }
+  });
+}
+
+function toggleChemodan() {
+  tajChemoadanActive = !tajChemoadanActive;
+  const badge = document.getElementById('taj-chemodan-badge');
+  const icon = document.getElementById('taj-chemodan-icon');
+  if (tajChemoadanActive) {
+    badge.style.background = 'var(--teal)';
+    badge.style.color = '#fff';
+    icon.textContent = '☑';
+  } else {
+    badge.style.background = 'var(--teal-light)';
+    badge.style.color = 'var(--teal)';
+    icon.textContent = '☐';
+  }
+  updateTajPrices();
+}
+
+function togglePoyezd() {
+  tajPoyezdActive = !tajPoyezdActive;
+  const badge = document.getElementById('taj-poyezd-badge');
+  const icon = document.getElementById('taj-poyezd-icon');
+  if (tajPoyezdActive) {
+    badge.style.background = 'var(--amber)';
+    badge.style.color = '#fff';
+    icon.textContent = '☑';
+  } else {
+    badge.style.background = 'var(--gold-pale)';
+    badge.style.color = 'var(--amber)';
+    icon.textContent = '☐';
+  }
+  updateTajPrices();
 }
 
 function toggleFab() {

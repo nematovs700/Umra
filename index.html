@@ -1715,7 +1715,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     <div class="modal-video-wrap">
       <button class="vid-nav prev" id="vidPrev" onclick="changeVideo(-1)">‹</button>
       <video id="modalVideo" controls playsinline></video>
-      <img id="modalImage" onclick="openFullImg(this.src)" style="width:100%;max-height:60vh;display:none;object-fit:contain;cursor:zoom-in;" />
+      <img id="modalImage" onclick="this.requestFullscreen&&this.requestFullscreen()" style="width:100%;max-height:60vh;display:none;object-fit:contain;cursor:zoom-in;" />
       <button class="vid-nav next" id="vidNext" onclick="changeVideo(1)">›</button>
     </div>
     <div class="modal-thumbs" id="modalThumbs"></div>
@@ -1875,9 +1875,10 @@ const packageVideos = {
     { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780476039/IMG_4823_prjpeu.mov', label: '🧳 Yuk — 30 kg · Qo\'l yuki — 8 kg' },
   ],
   plane: [
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780472228/oni4toen2fzg37z7rlcx_urpyny.mp4',          label: '✈ CentrumAir · Video' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780482075/IMG_4824_sr2lro.mov',                               label: '🛩 Economy class' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780482075/IMG_4825_rl0zfb.mov',                               label: '💼 Business class' },
     { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474859/b393d20b-1260-4ac1-881b-b8f486b3526e_qrxpos.jpg',  label: '🛩 Salon — 1' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474902/foto-salona-2-1024x768_znhx69.webp',       label: '🛩 Salon — 2' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474902/foto-salona-2-1024x768_znhx69.webp',                label: '🛩 Salon — 2' },
     { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474984/de2284ce-1b24-49ee-aaf5-808d17e6ea41_hxtqqv.jpg',  label: '🛩 Salon — 3' },
     { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780475386/8905280b-ab42-4fcd-8a66-659506cf72a1_rkb69a.jpg',  label: '🛩 Salon — 4' },
   ],
@@ -2204,27 +2205,6 @@ function closePhoto() {
   document.body.style.overflow = '';
 }
 
-function openFullImg(src) {
-  const modal = document.getElementById('photoModal');
-  const img   = document.getElementById('photoImg');
-  const prev  = document.getElementById('photoPrev');
-  const next  = document.getElementById('photoNext');
-  const counter = document.getElementById('photoCounter');
-  img.src = src;
-  prev.style.display  = 'none';
-  next.style.display  = 'none';
-  counter.style.display = 'none';
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  modal.onclick = function() {
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-    prev.style.display  = '';
-    next.style.display  = '';
-    counter.style.display = '';
-    modal.onclick = function() { closePhoto(); };
-  };
-}
 
 function changePhoto(dir) {
   currentPhoto = (currentPhoto + dir + photoUrls.length) % photoUrls.length;

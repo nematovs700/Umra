@@ -1416,10 +1416,10 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-name">Anjum</div>
         <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
-      <div class="card-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val">$2 250</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 700</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 600</span></div>
+      <div class="card-prices" id="anjum-prices">
+        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val anjum-price" data-base="2250">$2 250</span></div>
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val anjum-price" data-base="1700">$1 700</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val anjum-price" data-base="1600">$1 600</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1427,10 +1427,6 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <div>
             <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
             <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>
-            <div id="jum-ovqat-badge" onclick="toggleOvqat('jum')" style="display: inline-flex; align-items: center; gap: 5px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer; user-select: none; transition: all 0.2s;">
-              <span id="jum-ovqat-icon">☐</span>
-              <span>🍽 2 mahal ovqat mehmonxonani o'zidan: +100$</span>
-            </div>            
           </div>
         </div>
         <div class="hotel-item">
@@ -1438,6 +1434,14 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <div>
             <div class="hotel-name">Anjum Hotel</div>
             <div class="hotel-meta">5 kecha · Makka · 2 mahal shved stoli</div>
+            <div id="anjum-ovqat-badge" onclick="toggleOvqat('anjum')" style="display: inline-flex; align-items: center; gap: 5px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer; user-select: none; transition: all 0.2s;">
+              <span id="anjum-ovqat-icon">☐</span>
+              <span>🍽 2 mahal ovqat mehmonxonani o'zidan: +160$</span>
+            </div>
+            <div id="anjum-clock-badge" style="display: inline-flex; align-items: center; gap: 0; background: var(--gold-pale); color: var(--amber); font-size: 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); overflow: hidden; user-select: none;">
+              <span onclick="toggleClock('anjum')" id="anjum-clock-icon" style="padding: 4px 8px; border-right: 1px dashed var(--gold); cursor: pointer; transition: all 0.2s; font-size: 13px;">☐</span>
+              <span onclick="openPhoto(0)" style="padding: 4px 10px; cursor: pointer;">📷 Uzbek Foods | Clock tower: +60$</span>
+            </div>
           </div>
         </div>
       </div>
@@ -2011,9 +2015,9 @@ function showTab(id, btn) {
   btn.classList.add('active');
 }
 
-const ovqatState = { swiss: false, jum: false, mt: false };
-const clockState = { swiss: false, jum: false, mt: false };
-const ovqatExtra = { swiss: 160, jum: 200, mt: 160 };
+const ovqatState = { swiss: false, jum: false, mt: false, anjum: false };
+const clockState = { swiss: false, jum: false, mt: false, anjum: false };
+const ovqatExtra = { swiss: 160, jum: 200, mt: 160, anjum: 160 };
 
 function recalcPrices(key) {
   const extra = (ovqatState[key] ? ovqatExtra[key] : 0) + (clockState[key] ? 60 : 0);

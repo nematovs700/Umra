@@ -1447,7 +1447,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
             <div class="hotel-meta">5 kecha · Makka · 1 mahal shved stoli</div>
             <div id="anjum-ovqat-badge" onclick="toggleOvqat('anjum')" style="display: inline-flex; align-items: center; gap: 5px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer; user-select: none; transition: all 0.2s;">
               <span id="anjum-ovqat-icon">☐</span>
-              <span>🍽 2 mahal ovqat mehmonxonani o'zidan: +160$</span>
+              <span>🍽 2 mahal ovqat mehmonxonani o'zidan: +100$</span>
             </div>
             <div id="anjum-clock-badge" style="display: inline-flex; align-items: center; gap: 0; background: var(--gold-pale); color: var(--amber); font-size: 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); overflow: hidden; user-select: none;">
               <span onclick="toggleClock('anjum')" id="anjum-clock-icon" style="padding: 4px 8px; border-right: 1px dashed var(--gold); cursor: pointer; transition: all 0.2s; font-size: 13px;">☐</span>
@@ -2122,7 +2122,7 @@ function showTab(id, btn) {
 
 const ovqatState = { swiss: false, jum: false, mt: false, anjum: false };
 const clockState = { swiss: false, jum: false, mt: false, anjum: false };
-const ovqatExtra = { swiss: 160, jum: 200, mt: 160, anjum: 160 };
+const ovqatExtra = { swiss: 160, jum: 200, mt: 160, anjum: 100 };
 
 function recalcPrices(key) {
   const extra = (ovqatState[key] ? ovqatExtra[key] : 0) + (clockState[key] ? 60 : 0);

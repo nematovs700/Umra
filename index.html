@@ -2450,27 +2450,14 @@ function toggleFab() {
 
 function getNextLaunchDate() {
     const now = new Date();
-    // Grafik boshlanadigan sana: 2026-yil 25-iyun
-    const startDate = new Date("June 25, 2026 11:00:00");
 
-    // Agar hali 25-iyun kelmagan bo'lsa, taymerni aynan shu sanaga sozlaymiz
-    if (now < startDate) {
-        return startDate.getTime();
-    }
+    // Payshanba reylari: 25 Iyun 2026 dan har hafta, soat 11:00
+    let thu = new Date("2026-06-25T11:00:00");
+    while (thu <= now) thu.setDate(thu.getDate() + 7);
 
-    // Agar 25-iyun kelgan bo'lsa, haftalik grafikni hisoblaymiz:
-    
-    // 1. Kelgusi payshanba 11:00
-    let thu = new Date();
-    thu.setDate(now.getDate() + (4 + 7 - now.getDay()) % 7);
-    thu.setHours(11, 0, 0, 0);
-    if (now > thu) thu.setDate(thu.getDate() + 7);
-
-    // 2. Kelgusi shanba 05:40
-    let sat = new Date();
-    sat.setDate(now.getDate() + (6 + 7 - now.getDay()) % 7);
-    sat.setHours(5, 40, 0, 0);
-    if (now > sat) sat.setDate(sat.getDate() + 7);
+    // Shanba reylari: 4 Iyul 2026 dan har hafta, soat 06:20
+    let sat = new Date("2026-07-04T06:20:00");
+    while (sat <= now) sat.setDate(sat.getDate() + 7);
 
     return Math.min(thu.getTime(), sat.getTime());
 }

@@ -589,6 +589,12 @@
     display: block;
     object-fit: contain;
   }
+  .modal-video-wrap iframe {
+    width: 100%;
+    height: 60vh;
+    display: none;
+    border: none;
+  }
 
   /* Nav arrows */
   .vid-nav {
@@ -1910,6 +1916,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     <div class="modal-video-wrap">
       <button class="vid-nav prev" id="vidPrev" onclick="changeVideo(-1)">‹</button>
       <video id="modalVideo" controls playsinline></video>
+      <iframe id="modalIframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
       <img id="modalImage" onclick="this.requestFullscreen&&this.requestFullscreen()" style="width:100%;max-height:60vh;display:none;object-fit:contain;cursor:zoom-in;" />
       <button class="vid-nav next" id="vidNext" onclick="changeVideo(1)">›</button>
     </div>
@@ -2152,34 +2159,33 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 <script>
 const packageVideos = {
   swissotel: [
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035617/swissotel_azcxo9.mp4',   label: 'Swissotel Makkah' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780142258/IMG_0890_ost1m0.mp4',   label: 'Bosphorus Waqf Al Safi — Madina' },
+    { src: 'https://www.youtube.com/embed/jG1wH7q0KZ0', label: 'Swissotel Makkah' },
+    { src: 'https://www.youtube.com/embed/uUsLLpIIonA', label: 'Bosphorus Waqf Al Safi — Madina' },
   ],
   jumeirah: [
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779036641/jumeirah_wgcuwb.mp4',    label: 'Jumeirah Jabal Omar Makkah' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780142258/IMG_0890_ost1m0.mp4',   label: 'Bosphorus Waqf Al Safi — Madina' },
+    { src: 'https://www.youtube.com/embed/FAKlT-1g3vI', label: 'Jumeirah Jabal Omar Makkah' },
+    { src: 'https://www.youtube.com/embed/uUsLLpIIonA', label: 'Bosphorus Waqf Al Safi — Madina' },
   ],
   mtowers: [
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779036808/mtowers_a7po4r.mp4',     label: 'Makkah Towers' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780142258/IMG_0890_ost1m0.mp4',   label: 'Bosphorus Waqf Al Safi — Madina' },
+    { src: 'https://www.youtube.com/embed/-VXDgJfdTNw', label: 'Makkah Towers' },
+    { src: 'https://www.youtube.com/embed/uUsLLpIIonA', label: 'Bosphorus Waqf Al Safi — Madina' },
   ],
   anjum: [
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035670/anjum_cwov42.mp4',      label: 'Anjum Hotel' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780142258/IMG_0890_ost1m0.mp4',   label: 'Bosphorus Waqf Al Safi — Madina' },
+    { src: 'https://www.youtube.com/embed/OfcuctFlITw', label: 'Anjum Hotel' },
+    { src: 'https://www.youtube.com/embed/uUsLLpIIonA', label: 'Bosphorus Waqf Al Safi — Madina' },
   ],
   saja: [
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1782213195/IMG_2929_bawoon.mp4',    label: 'Saja Al Madinah' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035615/taj_video_o4igdg.mp4',   label: 'Taj Park Hotel' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035528/taj_haram_bnnfx4.mp4',   label: 'Haram manzarasi' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035618/taj_haram2_d7d0bd.mp4',  label: 'Haram manzarasi 2' },    
+    { src: 'https://www.youtube.com/embed/qWzLLH0YniM', label: 'Saja Al Madinah' },
+    { src: 'https://www.youtube.com/embed/CdOWXUjuNpA', label: 'Taj Park Hotel' },
+    { src: 'https://www.youtube.com/embed/H4-AhOPL4-4', label: 'Haram manzarasi' },
+    { src: 'https://www.youtube.com/embed/v-PK2m1Zc1s', label: 'Haram manzarasi 2' },
   ],
   taj: [
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780120340/IMG_4800_2_odpenb.mp4',  label: 'Jidda' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035615/taj_video_o4igdg.mp4',   label: 'Taj Park Hotel' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035528/taj_haram_bnnfx4.mp4',   label: 'Haram manzarasi' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035618/taj_haram2_d7d0bd.mp4',  label: 'Haram manzarasi 2' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035552/taj_oshxona_lbxoi3.mp4', label: 'Oshxona' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1779035657/alshahba_lfx0oa.mp4',    label: 'Grand Al Shahba Hotel' },
+    { src: 'https://www.youtube.com/embed/CdOWXUjuNpA', label: 'Taj Park Hotel' },
+    { src: 'https://www.youtube.com/embed/H4-AhOPL4-4', label: 'Haram manzarasi' },
+    { src: 'https://www.youtube.com/embed/v-PK2m1Zc1s', label: 'Haram manzarasi 2' },
+    { src: 'https://www.youtube.com/embed/TSx6TEUUDmI', label: 'Oshxona' },
+    { src: 'https://www.youtube.com/embed/SW9lKiZIcpo', label: 'Grand Al Shahba Hotel' },
   ],
   train: [
     { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780476827/Gemini_Generated_Image_7vk2xw7vk2xw7vk2_iubzfo.png', label: '🚄 Tez yurar poezd — 1' },
@@ -2187,11 +2193,11 @@ const packageVideos = {
     { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780476386/hhr_xkpzhi.webp',                                   label: '🚄 Tez yurar poezd — 3' },
   ],
   luggage: [
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780476039/IMG_4823_prjpeu.mov', label: '🧳 Yuk — 30 kg · Qo\'l yuki — 8 kg' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/f_mp4/v1780476039/IMG_4823_prjpeu.mov', label: '🧳 Yuk — 30 kg · Qo\'l yuki — 8 kg' },
   ],
   plane: [
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780482075/IMG_4824_sr2lro.mov',                               label: '🛩 Economy class' },
-    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/v1780482075/IMG_4825_rl0zfb.mov',                               label: '💼 Business class' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/f_mp4/v1780482075/IMG_4824_sr2lro.mov', label: '🛩 Economy class' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/video/upload/f_mp4/v1780482075/IMG_4825_rl0zfb.mov', label: '💼 Business class' },
     { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474859/b393d20b-1260-4ac1-881b-b8f486b3526e_qrxpos.jpg',  label: '🛩 Salon — 1' },
     { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474902/foto-salona-2-1024x768_znhx69.webp',                label: '🛩 Salon — 2' },
     { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474984/de2284ce-1b24-49ee-aaf5-808d17e6ea41_hxtqqv.jpg',  label: '🛩 Salon — 3' },
@@ -2227,21 +2233,31 @@ function isImage(src) {
   return /\.(jpg|jpeg|png|webp|gif)(\?|$)/i.test(src);
 }
 
+function isYouTube(src) {
+  return src.includes('youtube.com/embed');
+}
+
 function renderModal() {
   const v = currentVideos[currentIdx];
-  const videoEl = document.getElementById('modalVideo');
-  const imgEl   = document.getElementById('modalImage');
+  const videoEl  = document.getElementById('modalVideo');
+  const imgEl    = document.getElementById('modalImage');
+  const iframeEl = document.getElementById('modalIframe');
   document.getElementById('modalLabel').textContent = v.label;
 
+  videoEl.style.display  = 'none';
+  imgEl.style.display    = 'none';
+  iframeEl.style.display = 'none';
+  videoEl.pause();
+  videoEl.src   = '';
+  iframeEl.src  = '';
+
   if (isImage(v.src)) {
-    videoEl.pause();
-    videoEl.src = '';
-    videoEl.style.display = 'none';
     imgEl.src = v.src;
     imgEl.style.display = 'block';
+  } else if (isYouTube(v.src)) {
+    iframeEl.src = v.src + '?autoplay=1&rel=0';
+    iframeEl.style.display = 'block';
   } else {
-    imgEl.style.display = 'none';
-    imgEl.src = '';
     videoEl.style.display = 'block';
     videoEl.src = v.src;
     videoEl.load();
@@ -2305,6 +2321,7 @@ function closeModal() {
   document.getElementById('videoModal').classList.remove('open');
   document.getElementById('modalVideo').pause();
   document.getElementById('modalVideo').src = '';
+  document.getElementById('modalIframe').src = '';
   document.body.style.overflow = '';
 }
 

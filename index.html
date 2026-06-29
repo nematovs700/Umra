@@ -1342,6 +1342,35 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 [data-theme="dark"] .faq-a-inner {
   border-top-color: rgba(212,175,55,0.14);
 }
+
+/* Season toggle */
+.season-switch {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.season-btn {
+  padding: 9px 22px;
+  border-radius: 100px;
+  border: none;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.season-btn.active {
+  background: var(--dark);
+  color: var(--gold-light);
+  box-shadow: 0 2px 8px rgba(15,46,37,0.18);
+}
 </style>
 </head>
 <body>
@@ -1436,6 +1465,10 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 <div class="main">
 
   <!-- Packages -->
+  <div class="season-switch">
+    <button class="season-btn active" onclick="switchSeason('jun', this)">☀️ Iyun — Sentyabr</button>
+    <button class="season-btn" onclick="switchSeason('oct', this)">🍂 Oktyabr — Dekabr</button>
+  </div>
   <div class="section-title reveal-left">Umra paketlari</div>
   <div class="section-subtitle reveal-left delay-1">Etihad umra paketlari — ishonchli xizmat haqida qayg'uradiganlar uchun</div>
 
@@ -1449,16 +1482,16 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices" id="swissotel-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val swiss-price" data-base="2750">$2 700</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val swiss-price" data-base="1950">$1 900</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val swiss-price" data-base="1750">$1 750</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val swiss-price" data-base="1650">$1 650</span></div>
+        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val swiss-price" data-base="2700" data-tier="sngl">$2 700</span></div>
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val swiss-price" data-base="1900" data-tier="dbl">$1 900</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val swiss-price" data-base="1750" data-tier="trpl">$1 750</span></div>
+        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val swiss-price" data-base="1650" data-tier="quad">$1 650</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
-            <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
+            <div class="hotel-name" id="swiss-madina-name">Bosphorus Waqf Al Safi Hotel</div>
             <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>
           </div>
         </div>
@@ -1490,7 +1523,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Makka</span>
           </a>
-          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+          <a class="map-btn map-btn-madina" id="swiss-madina-map" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Madina</span>
           </a>
@@ -1511,16 +1544,16 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices" id="jumeirah-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val jum-price" data-base="2750">$2 800</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val jum-price" data-base="1950">$1 990</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val jum-price" data-base="1750">$1 890</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val jum-price" data-base="1650">$1 750</span></div>
+        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val jum-price" data-base="2800" data-tier="sngl">$2 800</span></div>
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val jum-price" data-base="1990" data-tier="dbl">$1 990</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val jum-price" data-base="1890" data-tier="trpl">$1 890</span></div>
+        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val jum-price" data-base="1750" data-tier="quad">$1 750</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
-            <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
+            <div class="hotel-name" id="jum-madina-name">Bosphorus Waqf Al Safi Hotel</div>
             <div class="hotel-meta">4 kecha · Madina · 2 mahal shved stoli</div>
           </div>
         </div>
@@ -1552,7 +1585,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Makka</span>
           </a>
-          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+          <a class="map-btn map-btn-madina" id="jum-madina-map" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Madina</span>
           </a>
@@ -1633,9 +1666,9 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices" id="anjum-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val anjum-price" data-base="2250">$2 250</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val anjum-price" data-base="1700">$1 700</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val anjum-price" data-base="1600">$1 600</span></div>
+        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val anjum-price" data-base="2250" data-tier="sngl">$2 250</span></div>
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val anjum-price" data-base="1700" data-tier="dbl">$1 700</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val anjum-price" data-base="1600" data-tier="trpl">$1 600</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1693,9 +1726,9 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices">
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 450</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 350</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 250</span></div>
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val" id="saja-dbl">$1 450</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val" id="saja-trpl">$1 350</span></div>
+        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val" id="saja-quad">$1 250</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1745,9 +1778,9 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-duration">13 kun / 12 kecha · Shanba jo'naydi</div>
       </div>
       <div class="card-prices" id="taj-prices">
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val taj-price" data-base="1350">$1 350</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val taj-price" data-base="1250">$1 250</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val taj-price" data-base="1200">$1 200</span></div>
+        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val taj-price" data-base="1350" data-tier="dbl">$1 350</span></div>
+        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val taj-price" data-base="1250" data-tier="trpl">$1 250</span></div>
+        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val taj-price" data-base="1200" data-tier="quad">$1 200</span></div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1767,7 +1800,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="hotel-item">
           <div class="hotel-dot"></div>
           <div>
-            <div class="hotel-name">Grand Al Shahba Hotel</div>
+            <div class="hotel-name" id="taj-madina-name">Grand Al Shahba Hotel</div>
             <div class="hotel-meta">3 kecha · 3 mahal ovqat</div>
             <div id="taj-poyezd-badge" onclick="togglePoyezd()" style="display: inline-flex; align-items: center; gap: 5px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer; user-select: none; transition: all 0.2s;">
               <span id="taj-poyezd-icon">☐</span>
@@ -1792,7 +1825,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Makka</span>
           </a>
-          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Grand+Al+Shahba+Hotel+Madinah" target="_blank">
+          <a class="map-btn map-btn-madina" id="taj-madina-map" href="https://www.google.com/maps/search/?api=1&query=Grand+Al+Shahba+Hotel+Madinah" target="_blank">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Madina</span>
           </a>
@@ -2159,38 +2192,38 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 <script>
 const packageVideos = {
   swissotel: [
-    { src: 'https://www.youtube.com/embed/jG1wH7q0KZ0', label: 'Swissotel Makkah' },
-    { src: 'https://www.youtube.com/embed/kXe29h7MAFs', label: 'Bosphorus Waqf Al Safi — Madina' },
+    { src: 'videos/swissotel.mp4',      label: 'Swissotel Makkah' },
+    { src: 'videos/bosphorus ws.MP4',   label: 'Bosphorus / Worth Peninsula — Madina' },
   ],
   jumeirah: [
-    { src: 'https://www.youtube.com/embed/FAKlT-1g3vI', label: 'Jumeirah Jabal Omar Makkah' },
-    { src: 'https://www.youtube.com/embed/kXe29h7MAFs', label: 'Bosphorus Waqf Al Safi — Madina' },
+    { src: 'videos/jumeirah.MP4',       label: 'Jumeirah Jabal Omar Makkah' },
+    { src: 'videos/bosphorus ws.MP4',   label: 'Bosphorus / Worth Peninsula — Madina' },
   ],
   mtowers: [
-    { src: 'https://www.youtube.com/embed/-VXDgJfdTNw', label: 'Makkah Towers' },
-    { src: 'https://www.youtube.com/embed/kXe29h7MAFs', label: 'Bosphorus Waqf Al Safi — Madina' },
+    { src: 'videos/mtowers.MOV',        label: 'Makkah Towers' },
+    { src: 'videos/bosphorus ws.MP4',   label: 'Bosphorus / Worth Peninsula — Madina' },
   ],
   anjum: [
-    { src: 'https://www.youtube.com/embed/OfcuctFlITw', label: 'Anjum Hotel' },
-    { src: 'https://www.youtube.com/embed/kXe29h7MAFs', label: 'Bosphorus Waqf Al Safi — Madina' },
+    { src: 'videos/anjum.mp4',          label: 'Anjum Hotel' },
+    { src: 'videos/bosphorus ws.MP4',   label: 'Bosphorus Waqf Al Safi — Madina' },
   ],
   saja: [
-    { src: 'https://www.youtube.com/embed/qWzLLH0YniM', label: 'Saja Al Madinah' },
-    { src: 'https://www.youtube.com/embed/CdOWXUjuNpA', label: 'Taj Park Hotel' },
-    { src: 'https://www.youtube.com/embed/H4-AhOPL4-4', label: 'Haram manzarasi' },
-    { src: 'https://www.youtube.com/embed/v-PK2m1Zc1s', label: 'Haram manzarasi 2' },
+    { src: 'videos/saja.MP4',           label: 'Saja Al Madinah' },
+    { src: 'videos/taj_video.mp4',      label: 'Taj Park Hotel' },
+    { src: 'videos/taj_haram.mp4',      label: 'Haram manzarasi' },
+    { src: 'videos/taj_haram2.mp4',     label: 'Haram manzarasi 2' },
   ],
   taj: [
-    { src: 'https://www.youtube.com/embed/CdOWXUjuNpA', label: 'Taj Park Hotel' },
-    { src: 'https://www.youtube.com/embed/H4-AhOPL4-4', label: 'Haram manzarasi' },
-    { src: 'https://www.youtube.com/embed/v-PK2m1Zc1s', label: 'Haram manzarasi 2' },
-    { src: 'https://www.youtube.com/embed/TSx6TEUUDmI', label: 'Oshxona' },
-    { src: 'https://www.youtube.com/embed/SW9lKiZIcpo', label: 'Grand Al Shahba Hotel' },
+    { src: 'videos/taj_video.mp4',      label: 'Taj Park Hotel' },
+    { src: 'videos/taj_haram.mp4',      label: 'Haram manzarasi' },
+    { src: 'videos/taj_haram2.mp4',     label: 'Haram manzarasi 2' },
+    { src: 'videos/taj_oshxona.mp4',    label: 'Oshxona' },
+    { src: 'videos/alshahba.MP4',       label: 'Grand Al Shahba / Saja Al Madinah' },
   ],
   train: [
-    { src: 'train-car.png',  label: '🚄 Poezd va mashina' },
-    { src: 'economy.jpg',    label: '🚄 Economy class' },
-    { src: 'business.webp',  label: '🚄 Business class' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780476827/Gemini_Generated_Image_7vk2xw7vk2xw7vk2_iubzfo.png', label: '🚄 Tez yurar poezd — 1' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780476394/hhr1_wjtugd.jpg',                                   label: '🚄 Tez yurar poezd — 2' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780476386/hhr_xkpzhi.webp',                                   label: '🚄 Tez yurar poezd — 3' },
   ],
   luggage: [
     { src: 'https://www.youtube.com/embed/47WrWSpgMyw', label: '🧳 Yuk — 30 kg · Qo\'l yuki — 8 kg' },
@@ -2198,9 +2231,10 @@ const packageVideos = {
   plane: [
     { src: 'https://www.youtube.com/embed/_eOa7DX7BBw', label: '🛩 Economy class' },
     { src: 'https://www.youtube.com/embed/BkqsKMzCIrY', label: '💼 Business class' },
-    { src: 'food1.jpg', label: '🍽 Ovqat — 1' },
-    { src: 'food2.jpg', label: '🍽 Ovqat — 2' },
-    { src: 'food3.jpg', label: '🍽 Ovqat — 3' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474859/b393d20b-1260-4ac1-881b-b8f486b3526e_qrxpos.jpg',  label: '🛩 Salon — 1' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474902/foto-salona-2-1024x768_znhx69.webp',                label: '🛩 Salon — 2' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780474984/de2284ce-1b24-49ee-aaf5-808d17e6ea41_hxtqqv.jpg',  label: '🛩 Salon — 3' },
+    { src: 'https://res.cloudinary.com/duzx5npwg/image/upload/v1780475386/8905280b-ab42-4fcd-8a66-659506cf72a1_rkb69a.jpg',  label: '🛩 Salon — 4' },
   ],
 };
 
@@ -2502,11 +2536,11 @@ const timerUpdate = setInterval(function() {
 }, 1000);
 
 const photoUrls = [
-  'u1.jpg',
-  'u2.jpg',
-  'u3.jpg',
-  'u4.jpg',
-  'u5.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039320/u1_gwybpn.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039322/u2_aeerjb.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u3_pljsb3.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039321/u4_igtunq.png',
+  'https://res.cloudinary.com/duzx5npwg/image/upload/v1779039324/u5_p7ucrz.png',
 ];
 let currentPhoto = 0;
 
@@ -2589,6 +2623,139 @@ function toggleDarkMode() {
     });
   }
 })();
+
+const seasons = {
+  jun: {
+    swissotel: {
+      madina_name: 'Bosphorus Waqf Al Safi Hotel',
+      madina_map: 'https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah',
+      sngl:[2700,'2 700'], dbl:[1900,'1 900'], trpl:[1750,'1 750'], quad:[1650,'1 650'],
+    },
+    jumeirah: {
+      madina_name: 'Bosphorus Waqf Al Safi Hotel',
+      madina_map: 'https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah',
+      sngl:[2800,'2 800'], dbl:[1990,'1 990'], trpl:[1890,'1 890'], quad:[1750,'1 750'],
+    },
+    anjum: {
+      sngl:[2250,'2 250'], dbl:[1700,'1 700'], trpl:[1600,'1 600'],
+    },
+    saja: { dbl:'1 450', trpl:'1 350', quad:'1 250' },
+    taj: {
+      madina_name: 'Grand Al Shahba Hotel',
+      madina_map: 'https://www.google.com/maps/search/?api=1&query=Grand+Al+Shahba+Hotel+Madinah',
+      dbl:[1350,'1 350'], trpl:[1250,'1 250'], quad:[1200,'1 200'],
+    },
+    payshanba: [
+      {dep:'25 Iyun',arr:'04 Iyul'},{dep:'02 Iyul',arr:'11 Iyul'},{dep:'09 Iyul',arr:'18 Iyul'},
+      {dep:'16 Iyul',arr:'25 Iyul'},{dep:'23 Iyul',arr:'01 Avg'},{dep:'30 Iyul',arr:'08 Avg'},
+      {dep:'06 Avg',arr:'15 Avg'},{dep:'13 Avg',arr:'22 Avg'},{dep:'20 Avg',arr:'29 Avg'},
+      {dep:'27 Avg',arr:'05 Sep'},{dep:'03 Sep',arr:'12 Sep'},{dep:'10 Sep',arr:'19 Sep'},
+      {dep:'17 Sep',arr:'26 Sep'},{dep:'24 Sep',arr:'03 Okt'},
+    ],
+    shanba: [
+      {dep:'04 Iyul',arr:'16 Iyul'},{dep:'11 Iyul',arr:'23 Iyul'},{dep:'18 Iyul',arr:'30 Iyul'},
+      {dep:'25 Iyul',arr:'06 Avg'},{dep:'01 Avg',arr:'13 Avg'},{dep:'08 Avg',arr:'20 Avg'},
+      {dep:'15 Avg',arr:'27 Avg'},{dep:'22 Avg',arr:'03 Sep'},{dep:'29 Avg',arr:'10 Sep'},
+      {dep:'05 Sep',arr:'17 Sep'},{dep:'12 Sep',arr:'24 Sep'},{dep:'19 Sep',arr:'01 Okt'},
+      {dep:'26 Sep',arr:'08 Okt'},
+    ],
+  },
+  oct: {
+    swissotel: {
+      madina_name: 'Worth Peninsula Hotel',
+      madina_map: 'https://www.google.com/maps/search/?api=1&query=Worth+Peninsula+Hotel+Madinah',
+      sngl:[3250,'3 250'], dbl:[2200,'2 200'], trpl:[2000,'2 000'], quad:[1900,'1 900'],
+    },
+    jumeirah: {
+      madina_name: 'Worth Peninsula Hotel 2',
+      madina_map: 'https://www.google.com/maps/search/?api=1&query=Worth+Peninsula+Hotel+Madinah',
+      sngl:[3490,'3 490'], dbl:[2390,'2 390'], trpl:[2090,'2 090'], quad:[1990,'1 990'],
+    },
+    anjum: {
+      sngl:[2700,'2 700'], dbl:[1900,'1 900'], trpl:[1800,'1 800'],
+    },
+    saja: { dbl:'1 600', trpl:'1 500', quad:'1 400' },
+    taj: {
+      madina_name: 'Saja Al Madinah',
+      madina_map: 'https://www.google.com/maps/search/?api=1&query=Saja+Al+Madinah+Hotel',
+      dbl:[1450,'1 450'], trpl:[1350,'1 350'], quad:[1300,'1 300'],
+    },
+    payshanba: [
+      {dep:'01 Okt',arr:'10 Okt'},{dep:'08 Okt',arr:'17 Okt'},{dep:'15 Okt',arr:'24 Okt'},
+      {dep:'22 Okt',arr:'31 Okt'},{dep:'29 Okt',arr:'07 Noy'},{dep:'05 Noy',arr:'14 Noy'},
+      {dep:'12 Noy',arr:'21 Noy'},{dep:'19 Noy',arr:'28 Noy'},{dep:'26 Noy',arr:'05 Dek'},
+      {dep:'03 Dek',arr:'12 Dek'},
+    ],
+    shanba: [
+      {dep:'03 Okt',arr:'15 Okt'},{dep:'10 Okt',arr:'22 Okt'},{dep:'17 Okt',arr:'29 Okt'},
+      {dep:'24 Okt',arr:'05 Noy'},{dep:'31 Okt',arr:'12 Noy'},{dep:'07 Noy',arr:'19 Noy'},
+      {dep:'14 Noy',arr:'26 Noy'},{dep:'21 Noy',arr:'03 Dek'},{dep:'28 Noy',arr:'10 Dek'},
+      {dep:'05 Dek',arr:'17 Dek'},
+    ],
+  },
+};
+
+let currentSeason = 'jun';
+
+function switchSeason(season, btn) {
+  if (currentSeason === season) return;
+  currentSeason = season;
+  document.querySelectorAll('.season-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const s = seasons[season];
+
+  // Reset & update swiss, jum, anjum prices
+  [['swiss','swissotel'],['jum','jumeirah'],['anjum','anjum']].forEach(([cls, key]) => {
+    if (ovqatState[cls] !== undefined) { ovqatState[cls] = false; setOvqatUI(cls, false); }
+    if (clockState[cls] !== undefined) { clockState[cls] = false; setClockUI(cls, false); }
+    const pd = s[key];
+    ['sngl','dbl','trpl','quad'].forEach(tier => {
+      if (!pd[tier]) return;
+      document.querySelectorAll('.' + cls + '-price[data-tier="' + tier + '"]').forEach(el => {
+        el.dataset.base = pd[tier][0];
+        el.textContent = '$' + pd[tier][1];
+      });
+    });
+  });
+
+  // Saja static prices
+  document.getElementById('saja-dbl').textContent  = '$' + s.saja.dbl;
+  document.getElementById('saja-trpl').textContent = '$' + s.saja.trpl;
+  document.getElementById('saja-quad').textContent = '$' + s.saja.quad;
+
+  // Taj prices + reset add-ons
+  tajChemoadanActive = false; tajPoyezdActive = false;
+  document.getElementById('taj-chemodan-icon').textContent = '☐';
+  document.getElementById('taj-chemodan-badge').style.background = 'var(--teal-light)';
+  document.getElementById('taj-chemodan-badge').style.color = 'var(--teal)';
+  document.getElementById('taj-poyezd-icon').textContent = '☐';
+  document.getElementById('taj-poyezd-badge').style.background = 'var(--gold-pale)';
+  document.getElementById('taj-poyezd-badge').style.color = 'var(--amber)';
+  ['dbl','trpl','quad'].forEach(tier => {
+    document.querySelectorAll('.taj-price[data-tier="' + tier + '"]').forEach(el => {
+      el.dataset.base = s.taj[tier][0];
+      el.textContent = '$' + s.taj[tier][1];
+    });
+  });
+
+  // Hotel names & map links
+  [['swiss','swissotel'],['jum','jumeirah'],['taj','taj']].forEach(([id, key]) => {
+    const pd = s[key];
+    if (!pd.madina_name) return;
+    const nameEl = document.getElementById(id + '-madina-name');
+    const mapEl  = document.getElementById(id + '-madina-map');
+    if (nameEl) nameEl.textContent = pd.madina_name;
+    if (mapEl)  mapEl.href = pd.madina_map;
+  });
+
+  // Dates
+  const makeChips = arr => arr.map(d =>
+    `<div class="date-chip"><span class="dep">${d.dep}</span><span class="sep">→</span><span class="arr">${d.arr}</span></div>`
+  ).join('');
+  document.getElementById('payshanba').innerHTML = makeChips(s.payshanba);
+  document.getElementById('shanba').innerHTML    = makeChips(s.shanba);
+}
 
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');

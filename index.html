@@ -1758,7 +1758,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         </div>
       </div>
       <div class="card-actions">
-        <button class="video-btn" onclick="openModal('jumeirah')">
+        <button class="video-btn" onclick="openModal('jumeirah13')">
           <div class="video-play-ring">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </div>
@@ -1818,7 +1818,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         </div>
       </div>
       <div class="card-actions">
-        <button class="video-btn" onclick="openModal('anjum')">
+        <button class="video-btn" onclick="openModal('anjum13')">
           <div class="video-play-ring">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </div>
@@ -1944,6 +1944,12 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         </div>
       </div>
       <div class="card-actions">
+        <button class="video-btn" onclick="openModal('shohada')">
+          <div class="video-play-ring">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span>Video</span>
+        </button>
         <div class="map-btns">
           <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Al+Shohada+Hotel+Makkah" target="_blank">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -2000,6 +2006,12 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         </div>
       </div>
       <div class="card-actions">
+        <button class="video-btn" onclick="openModal('nawazi')">
+          <div class="video-play-ring">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span>Video</span>
+        </button>
         <div class="map-btns">
           <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Nawazi+Towers+Hotel+Makkah" target="_blank">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -2396,6 +2408,29 @@ const packageVideos = {
     { src: GH+'anjum.mp4',          label: 'Anjum Hotel' },
     { src: GH+'bosphorus_ws.MP4',   label: 'Bosphorus Waqf Al Safi — Madina' },
   ],
+  jumeirah13: [
+    { src: GH+'vivid.hotel.MOV',    label: 'Vivid Jeddah Hotel' },
+    { src: GH+'jidda.piknik.MP4',   label: '🏖 Jidda piknik' },    
+    { src: GH+'jumeirah.MP4',       label: 'Jumeirah Jabal Omar Makkah' },
+    { src: GH+'jumeirah.room.mp4',  label: 'Jumeirah xonasi' },
+    { src: GH+'bosphorus_ws.MP4',   label: 'Bosphorus Waqf Al Safi — Madina' },
+  ],
+  anjum13: [
+    { src: GH+'vivid.hotel.MOV',    label: 'Vivid Jeddah Hotel' },
+    { src: GH+'jidda.piknik.MP4',   label: '🏖 Jidda piknik' },    
+    { src: GH+'anjum.mp4',          label: 'Anjum Hotel' },
+    { src: GH+'bosphorus_ws.MP4',   label: 'Bosphorus Waqf Al Safi — Madina' },
+  ],
+  shohada: [
+    { src: GH+'vivid.hotel.MOV',      label: 'Vivid Jeddah Hotel' },
+    { src: GH+'jidda.piknik.MP4',     label: '🏖 Jidda piknik' },    
+    { src: GH+'al.shohada.hotel.mp4', label: 'Al Shohada Hotel Makkah' },
+    { src: GH+'bosphorus_ws.MP4',     label: 'Bosphorus Waqf Al Safi — Madina' },
+  ],
+  nawazi: [
+    { src: GH+'jidda.piknik.MP4',     label: '🏖 Jidda piknik' },    
+    { src: GH+'Almokhtara.hotel.MOV', label: 'Mukhtara Plaza Hotel — Madina' },
+  ],
   saja: [
     { src: GH+'saja.MP4',           label: 'Saja Al Madinah' },
     { src: GH+'taj_video.mp4',      label: 'Taj Park Hotel' },
@@ -2403,11 +2438,12 @@ const packageVideos = {
     { src: GH+'taj_haram2.mp4',     label: 'Haram manzarasi 2' },
   ],
   taj: [
-    { src: GH+'taj_video.mp4',      label: 'Taj Park Hotel' },
-    { src: GH+'taj_haram.mp4',      label: 'Haram manzarasi' },
-    { src: GH+'taj_haram2.mp4',     label: 'Haram manzarasi 2' },
-    { src: GH+'taj_oshxona.mp4',    label: 'Oshxona' },
-    { src: GH+'alshahba.MP4',       label: 'Grand Al Shahba / Saja Al Madinah' },
+    { src: GH+'jidda.piknik.MP4',     label: '🏖 Jidda piknik' },    
+    { src: GH+'taj_video.mp4',        label: 'Taj Park Hotel' },
+    { src: GH+'taj_haram.mp4',        label: 'Haram manzarasi' },
+    { src: GH+'taj_haram2.mp4',       label: 'Haram manzarasi 2' },
+    { src: GH+'taj_oshxona.mp4',      label: 'Oshxona' },
+    { src: GH+'Almokhtara.hotel.MOV', label: 'Mukhtara Plaza Hotel — Madina' },
   ],
   train: [
     { src: GH_IMG+'train-car.png', label: '🚄 Tez yurar poezd' },
@@ -2431,6 +2467,10 @@ const pkgNames = {
   jumeirah:  'Jumeirah paketi',
   mtowers:   'Makkah Towers paketi',
   anjum:     'Anjum paketi',
+  jumeirah13:'Jumeirah (13 kun) paketi',
+  anjum13:   'Anjum (13 kun) paketi',
+  shohada:   'Shohada paketi',
+  nawazi:    'Nawazi paketi',
   saja:      'Saja paketi',
   train:     'Tez yurar poezd · Transfer',
   taj:       'Taj paketi',

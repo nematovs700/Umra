@@ -2141,6 +2141,10 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <video id="modalVideo" controls playsinline></video>
       <iframe id="modalIframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
       <img id="modalImage" onclick="this.requestFullscreen&&this.requestFullscreen()" style="width:100%;max-height:60vh;display:none;object-fit:contain;cursor:zoom-in;" />
+      <div id="modalVideoError" style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:220px;padding:32px 24px;text-align:center;color:rgba(255,255,255,0.7);">
+        <div style="font-size:14px;">⚠️ Bu video ushbu qurilmada ochilmayapti (format qo'llab-quvvatlanmaydi)</div>
+        <a id="modalVideoErrorLink" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:100px;background:var(--gold);color:var(--dark);font-weight:600;font-size:13px;text-decoration:none;">📥 Videoni ochish / yuklab olish</a>
+      </div>
       <button class="vid-nav next" id="vidNext" onclick="changeVideo(1)">›</button>
     </div>
     <div class="modal-thumbs" id="modalThumbs"></div>
@@ -2503,11 +2507,14 @@ function renderModal() {
   const videoEl  = document.getElementById('modalVideo');
   const imgEl    = document.getElementById('modalImage');
   const iframeEl = document.getElementById('modalIframe');
+  const errEl    = document.getElementById('modalVideoError');
+  const errLink  = document.getElementById('modalVideoErrorLink');
   document.getElementById('modalLabel').textContent = v.label;
 
   videoEl.style.display  = 'none';
   imgEl.style.display    = 'none';
   iframeEl.style.display = 'none';
+  errEl.style.display    = 'none';
   videoEl.pause();
   videoEl.src   = '';
   iframeEl.src  = '';
@@ -2520,6 +2527,11 @@ function renderModal() {
     iframeEl.style.display = 'block';
   } else {
     videoEl.style.display = 'block';
+    videoEl.onerror = () => {
+      videoEl.style.display = 'none';
+      errLink.href = v.src;
+      errEl.style.display = 'flex';
+    };
     videoEl.src = v.src;
     videoEl.load();
     videoEl.play().catch(() => {});

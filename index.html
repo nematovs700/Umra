@@ -1677,6 +1677,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="pkg-duration">10 kun / 9 kecha · Payshanba jo'naydi</div>
       </div>
       <div class="card-prices">
+        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val" id="saja-sngl">$1 850</span></div>
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val" id="saja-dbl">$1 450</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val" id="saja-trpl">$1 350</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val" id="saja-quad">$1 250</span></div>
@@ -2876,7 +2877,7 @@ const seasons = {
     anjum: {
       sngl:[2250,'2 250'], dbl:[1700,'1 700'], trpl:[1600,'1 600'],
     },
-    saja: { dbl:'1 450', trpl:'1 350', quad:'1 250' },
+    saja: { sngl:'1 850', dbl:'1 450', trpl:'1 350', quad:'1 250' },
     taj: {
       madina_name: 'Mukhtara Plaza Hotel',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Mukhtara+Plaza+Hotel+Madinah',
@@ -2911,11 +2912,11 @@ const seasons = {
     anjum: {
       sngl:[2700,'2 700'], dbl:[1900,'1 900'], trpl:[1800,'1 800'],
     },
-    saja: { dbl:'1 600', trpl:'1 500', quad:'1 400' },
+    saja: { sngl:'2 000', dbl:'1 600', trpl:'1 500', quad:'1 400' },
     taj: {
       madina_name: 'Saja Al Madinah',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Saja+Al+Madinah+Hotel',
-      dbl:[1450,'1 450'], trpl:[1350,'1 350'], quad:[1300,'1 300'],
+      sngl:[1950,'1 950'], dbl:[1450,'1 450'], trpl:[1350,'1 350'], quad:[1300,'1 300'],
     },
     payshanba: [
       {dep:'01 Okt',arr:'10 Okt'},{dep:'08 Okt',arr:'17 Okt'},{dep:'15 Okt',arr:'24 Okt'},
@@ -2957,6 +2958,7 @@ function switchSeason(season, btn) {
   });
 
   // Saja static prices
+  document.getElementById('saja-sngl').textContent = '$' + s.saja.sngl;
   document.getElementById('saja-dbl').textContent  = '$' + s.saja.dbl;
   document.getElementById('saja-trpl').textContent = '$' + s.saja.trpl;
   document.getElementById('saja-quad').textContent = '$' + s.saja.quad;
@@ -2969,7 +2971,8 @@ function switchSeason(season, btn) {
   document.getElementById('taj-poyezd-icon').textContent = '☐';
   document.getElementById('taj-poyezd-badge').style.background = 'var(--gold-pale)';
   document.getElementById('taj-poyezd-badge').style.color = 'var(--amber)';
-  ['dbl','trpl','quad'].forEach(tier => {
+  ['sngl','dbl','trpl','quad'].forEach(tier => {
+    if (!s.taj[tier]) return;
     document.querySelectorAll('.taj-price[data-tier="' + tier + '"]').forEach(el => {
       el.dataset.base = s.taj[tier][0];
       el.textContent = '$' + s.taj[tier][1];

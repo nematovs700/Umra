@@ -1723,7 +1723,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
     <!-- JUMEIRAH 13 -->
-    <div class="pkg-card pkg-13 reveal delay-6">
+    <div class="pkg-card pkg-13 jun-only reveal delay-6">
       <div class="card-header">
         <div class="pkg-badge badge-jumeirah">❖ Jumeirah · 13</div>
         <div class="pkg-name">Jumeirah</div>
@@ -1783,7 +1783,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
     <!-- ANJUM 13 -->
-    <div class="pkg-card pkg-13 reveal delay-6">
+    <div class="pkg-card pkg-13 jun-only reveal delay-6">
       <div class="card-header">
         <div class="pkg-badge badge-lux">✦ Anjum · 13</div>
         <div class="pkg-name">Anjum</div>
@@ -1875,6 +1875,10 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <div>
             <div class="hotel-name" id="taj-madina-name">Mukhtara Plaza Hotel</div>
             <div class="hotel-meta">3 kecha · 2 mahal shved stoli</div>
+            <div id="taj-poyezd-badge" onclick="togglePoyezd()" class="oct-only" style="display: none; align-items: center; gap: 5px; background: var(--gold-pale); color: var(--amber); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--gold); cursor: pointer; user-select: none; transition: all 0.2s;">
+              <span id="taj-poyezd-icon">☐</span>
+              <span>🚄 Tez yurar poyezd xizmati: +50$ qo'shiladi</span>
+            </div>
             <div id="taj-chemodan-badge" onclick="toggleChemodan()" style="display: inline-flex; align-items: center; gap: 5px; background: var(--teal-light); color: var(--teal); font-size: 10px; padding: 4px 10px; border-radius: 6px; margin-top: 5px; border: 1px dashed var(--teal); cursor: pointer; user-select: none; transition: all 0.2s;">
               <span id="taj-chemodan-icon">☐</span>
               <span>🧳 Chemodan to'liq paketi: +50$ qo'shiladi</span>
@@ -1909,7 +1913,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
     <!-- SHOHADA 13 -->
-    <div class="pkg-card pkg-13 reveal delay-6">
+    <div class="pkg-card pkg-13 jun-only reveal delay-6">
       <div class="card-header">
         <div class="pkg-badge badge-shohada">◇ Shohada · 13</div>
         <div class="pkg-name">Shohada</div>
@@ -1969,7 +1973,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
     <!-- NAWAZI 13 -->
-    <div class="pkg-card pkg-13 reveal delay-6">
+    <div class="pkg-card pkg-13 jun-only reveal delay-6">
       <div class="card-header">
         <div class="pkg-badge badge-nawazi">✧ Nawazi · 13</div>
         <div class="pkg-name">Nawazi</div>
@@ -2346,36 +2350,6 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          <span>Bolalar uchun alohida narx bormi?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">
-          <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
-            <div style="padding:10px 14px;background:var(--gold-pale);border-radius:8px;border-left:3px solid var(--gold);">
-              <div style="display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-size:13px;color:var(--text);">🍼 2 yoshgacha <span style="color:var(--text-muted);font-size:11px;">(krovatisiz)</span></span>
-                <span style="font-weight:600;color:var(--amber);">$130</span>
-              </div>
-            </div>
-            <div style="padding:10px 14px;background:var(--gold-pale);border-radius:8px;border-left:3px solid var(--gold);">
-              <div style="display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-size:13px;color:var(--text);">👶 2 yoshdan 6 yoshgacha <span style="color:var(--text-muted);font-size:11px;">(krovatisiz)</span></span>
-                <span style="font-weight:600;color:var(--amber);">$870</span>
-              </div>
-            </div>
-            <div style="padding:10px 14px;background:var(--gold-pale);border-radius:8px;border-left:3px solid var(--gold);">
-              <div style="display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-size:13px;color:var(--text);">🍽️ 6 yoshdan 12 yoshgacha <span style="color:var(--text-muted);font-size:11px;">(krovati bilan, ovqatda 50% chegirma)</span></span>
-                <span style="font-weight:600;color:var(--amber);">Chegirma summasi</span>
-              </div>
-            </div>
-          </div>
-          <div style="margin-top:12px;font-size:12px;color:var(--text-muted);">* Paket turidan qat'iy nazar, hona joylashuvini inobatga olib narx belgilanadi. Batafsil ma'lumot uchun biz bilan bog'laning.</div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
           <span>To'lovni bo'lib to'lash mumkinmi?</span>
           <span class="faq-icon">+</span>
         </button>
@@ -2516,6 +2490,7 @@ function renderModal() {
   imgEl.style.display    = 'none';
   iframeEl.style.display = 'none';
   errEl.style.display    = 'none';
+  videoEl.onerror = null;
   videoEl.pause();
   videoEl.src   = '';
   iframeEl.src  = '';
@@ -2639,6 +2614,7 @@ function recalcPrices(key) {
 function setOvqatUI(key, active) {
   const badge = document.getElementById(key + '-ovqat-badge');
   const icon  = document.getElementById(key + '-ovqat-icon');
+  if (!badge || !icon) return;
   badge.style.background = active ? 'var(--amber)' : 'var(--gold-pale)';
   badge.style.color      = active ? '#fff' : 'var(--amber)';
   icon.textContent       = active ? '☑' : '☐';
@@ -2647,6 +2623,7 @@ function setOvqatUI(key, active) {
 function setClockUI(key, active) {
   const badge = document.getElementById(key + '-clock-badge');
   const icon  = document.getElementById(key + '-clock-icon');
+  if (!badge || !icon) return;
   icon.textContent       = active ? '☑' : '☐';
   badge.style.background = active ? 'var(--amber)' : 'var(--gold-pale)';
   badge.style.color      = active ? '#fff' : 'var(--amber)';
@@ -2722,6 +2699,7 @@ function togglePoyezd() {
   tajPoyezdActive = !tajPoyezdActive;
   const badge = document.getElementById('taj-poyezd-badge');
   const icon = document.getElementById('taj-poyezd-icon');
+  if (!badge || !icon) { updateTajPrices(); return; }
   if (tajPoyezdActive) {
     badge.style.background = 'var(--amber)';
     badge.style.color = '#fff';
@@ -2965,18 +2943,32 @@ function switchSeason(season, btn) {
 
   // Taj prices + reset add-ons
   tajChemoadanActive = false; tajPoyezdActive = false;
-  document.getElementById('taj-chemodan-icon').textContent = '☐';
-  document.getElementById('taj-chemodan-badge').style.background = 'var(--teal-light)';
-  document.getElementById('taj-chemodan-badge').style.color = 'var(--teal)';
-  document.getElementById('taj-poyezd-icon').textContent = '☐';
-  document.getElementById('taj-poyezd-badge').style.background = 'var(--gold-pale)';
-  document.getElementById('taj-poyezd-badge').style.color = 'var(--amber)';
+  if (document.getElementById('taj-chemodan-icon')) {
+    document.getElementById('taj-chemodan-icon').textContent = '☐';
+    document.getElementById('taj-chemodan-badge').style.background = 'var(--teal-light)';
+    document.getElementById('taj-chemodan-badge').style.color = 'var(--teal)';
+  }
+  if (document.getElementById('taj-poyezd-icon')) {
+    document.getElementById('taj-poyezd-icon').textContent = '☐';
+    document.getElementById('taj-poyezd-badge').style.background = 'var(--gold-pale)';
+    document.getElementById('taj-poyezd-badge').style.color = 'var(--amber)';
+  }
   ['sngl','dbl','trpl','quad'].forEach(tier => {
     if (!s.taj[tier]) return;
     document.querySelectorAll('.taj-price[data-tier="' + tier + '"]').forEach(el => {
       el.dataset.base = s.taj[tier][0];
       el.textContent = '$' + s.taj[tier][1];
     });
+  });
+
+  // Faqat iyun-sentyabr mavsumida mavjud paketlar (Jumeirah-13, Anjum-13, Shohada, Nawazi)
+  document.querySelectorAll('.jun-only').forEach(el => {
+    el.style.display = season === 'oct' ? 'none' : '';
+  });
+
+  // Poyezd xizmati tugmasi — faqat oktyabr-dekabr mavsumida ko'rinadi
+  document.querySelectorAll('.oct-only').forEach(el => {
+    el.style.display = season === 'oct' ? 'inline-flex' : 'none';
   });
 
   // Hotel names & map links

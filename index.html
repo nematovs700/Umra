@@ -245,8 +245,6 @@
   [data-theme="dark"] .badge-towers   { background: rgba(100,110,120,0.18); color: #A0AABA; }
   .badge-comfort { background: var(--green-light); color: var(--green); }
   .badge-taj { background: var(--teal-light); color: var(--teal); }
-  .badge-shohada { background: #F3E8FF; color: #7C3AED; }
-  [data-theme="dark"] .badge-shohada { background: rgba(124,58,237,0.18); color: #C4B5FD; }
 
   /* Popular ribbon */
   .popular-ribbon {
@@ -1901,66 +1899,6 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       </div>
     </div>
 
-    <!-- SHOHADA 13 -->
-    <div class="pkg-card pkg-13 jun-only reveal delay-6">
-      <div class="card-header">
-        <div class="pkg-badge badge-shohada">◇ Shohada · 13</div>
-        <div class="pkg-name">Shohada</div>
-        <div class="pkg-duration">13 kun / 12 kecha · Shanba jo'naydi</div>
-      </div>
-      <div class="card-prices" id="shohada-prices">
-        <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val" data-base="2650">$2 650</span></div>
-        <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val" data-base="1850">$1 850</span></div>
-        <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val" data-base="1750">$1 750</span></div>
-        <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val" data-base="1650">$1 650</span></div>
-      </div>
-      <div class="card-hotels">
-        <div class="hotel-item">
-          <div class="hotel-dot"></div>
-          <div>
-            <div class="hotel-name">Vivid Jeddah Hotel</div>
-            <div class="hotel-meta">1 kecha · Jidda · 1 mahal ovqatlanish</div>
-          </div>
-        </div>
-        <div class="hotel-item">
-          <div class="hotel-dot"></div>
-          <div>
-            <div class="hotel-name">Al Shohada Hotel Makkah</div>
-            <div class="hotel-meta">8 kecha · Makka · 2 mahal shved stoli</div>
-          </div>
-        </div>
-        <div class="hotel-item">
-          <div class="hotel-dot"></div>
-          <div>
-            <div class="hotel-name">Bosphorus Waqf Al Safi Hotel</div>
-            <div class="hotel-meta">3 kecha · Madina · 2 mahal shved stoli</div>
-          </div>
-        </div>
-      </div>
-      <div class="card-actions">
-        <button class="video-btn" onclick="openModal('shohada')">
-          <div class="video-play-ring">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <span>Video</span>
-        </button>
-        <div class="map-btns">
-          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Al+Shohada+Hotel+Makkah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Makka</span>
-          </a>
-          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Madina</span>
-          </a>
-        </div>
-      </div>
-      <div class="card-footer">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        <span>1 guruh · 49 ziyoratchi</span>
-      </div>
-    </div>
-
   </div>
 
     <!-- Schedule -->
@@ -1970,7 +1908,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
 
     <div class="tabs">
       <button class="tab-btn active" onclick="showTab('payshanba', this)">Payshanba — Swissotel · Jumeirah · Anjum · Saja</button>
-      <button class="tab-btn" onclick="showTab('shanba', this)">Shanba — Jumeirah · Anjum · Taj · Shohada</button>
+      <button class="tab-btn" onclick="showTab('shanba', this)">Shanba — Jumeirah · Anjum · Taj</button>
       <button class="tab-btn" onclick="showTab('shanba6', this)">Shanba (6 kunlik) — Jumeirah-6</button>
     </div>
 
@@ -2027,7 +1965,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       </div>
 
       <div class="flight-card">
-        <div class="flight-pkg-name">Jumeirah (6/13 kun) · Anjum · Taj · Shohada paketlari</div>
+        <div class="flight-pkg-name">Jumeirah (6/13 kun) · Anjum · Taj paketlari</div>
         <div class="flight-route">
           <div><div class="flight-city">Toshkent</div><div class="flight-time">06:20</div></div>
           <div class="flight-arrow">✈</div>
@@ -2323,12 +2261,6 @@ const packageVideos = {
     { src: GH+'anjum.mp4',          label: 'Anjum Hotel' },
     { src: GH+'bosphorus_ws.MP4',   label: 'Bosphorus Waqf Al Safi — Madina' },
   ],
-  shohada: [
-    { src: GH+'vivid.hotel.MOV',      label: 'Vivid Jeddah Hotel' },
-    { src: GH+'jidda.piknik.MP4',     label: '🏖 Jidda piknik' },    
-    { src: GH+'al.shohada.hotel.mp4', label: 'Al Shohada Hotel Makkah' },
-    { src: GH+'bosphorus_ws.MP4',     label: 'Bosphorus Waqf Al Safi — Madina' },
-  ],
   saja: [
     { src: GH+'saja.MP4',           label: 'Saja Al Madinah' },
     { src: GH+'taj_video.mp4',      label: 'Taj Park Hotel' },
@@ -2368,7 +2300,6 @@ const pkgNames = {
   jumeirah6: 'Jumeirah (6 kun) paketi',
   jumeirah13:'Jumeirah (13 kun) paketi',
   anjum13:   'Anjum (13 kun) paketi',
-  shohada:   'Shohada paketi',
   saja:      'Saja paketi',
   train:     'Tez yurar poezd · Transfer',
   taj:       'Taj paketi',
@@ -2812,7 +2743,7 @@ function switchSeason(season, btn) {
     });
   });
 
-  // Faqat iyun-sentyabr mavsumida mavjud paketlar (Jumeirah-13, Anjum-13, Shohada)
+  // Faqat iyun-sentyabr mavsumida mavjud paketlar (Jumeirah-6, Jumeirah-13, Anjum-13)
   document.querySelectorAll('.jun-only').forEach(el => {
     el.style.display = season === 'oct' ? 'none' : '';
   });

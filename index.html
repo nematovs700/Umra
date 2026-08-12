@@ -511,6 +511,24 @@
     border-color: var(--blue);
   }
   .video-btn svg, .map-btn svg { flex-shrink: 0; }
+  .map-btn-row { display: flex; gap: 4px; }
+  .map-btn-row .map-btn { flex: 1; }
+  .map-btn-3d {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    background: var(--gold-pale);
+    color: var(--amber);
+    border: 1px solid rgba(212,175,55,0.3);
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .map-btn-3d:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
 
   /* Modal overlay */
   .modal-overlay {
@@ -1470,14 +1488,20 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <span>Video</span>
         </button>
         <div class="map-btns">
-          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Swissotel+Makkah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Makka</span>
-          </a>
-          <a class="map-btn map-btn-madina" id="swiss-madina-map" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Madina</span>
-          </a>
+          <div class="map-btn-row">
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Swissotel+Makkah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Makka</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/mekka?m=39.826887,21.418826/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
+          <div class="map-btn-row">
+            <a class="map-btn map-btn-madina" id="swiss-madina-map" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Madina</span>
+            </a>
+            <a class="map-btn-3d" id="swiss-madina-3d" href="https://urbi-sa.com/medina?m=39.604438,24.470368/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -1528,14 +1552,20 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <span>Video</span>
         </button>
         <div class="map-btns">
-          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Jumeirah+Jabal+Omar+Makkah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Makka</span>
-          </a>
-          <a class="map-btn map-btn-madina" id="jum-madina-map" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Madina</span>
-          </a>
+          <div class="map-btn-row">
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Jumeirah+Jabal+Omar+Makkah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Makka</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/mekka?m=39.821808,21.419174/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
+          <div class="map-btn-row">
+            <a class="map-btn map-btn-madina" id="jum-madina-map" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Madina</span>
+            </a>
+            <a class="map-btn-3d" id="jum-madina-3d" href="https://urbi-sa.com/medina?m=39.604438,24.470368/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -1580,14 +1610,20 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <span>Video</span>
         </button>
         <div class="map-btns">
-          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Anjum+Hotel+Makkah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Makka</span>
-          </a>
-          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Madina</span>
-          </a>
+          <div class="map-btn-row">
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Anjum+Hotel+Makkah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Makka</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/mekka?m=39.819754,21.424806/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
+          <div class="map-btn-row">
+            <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Madina</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/medina?m=39.604438,24.470368/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -1633,14 +1669,20 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <span>Video</span>
         </button>
         <div class="map-btns">
-          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Taj+Park+Hotel+Makkah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Makka</span>
-          </a>
-          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Saja+Al+Madinah+Hotel" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Madina</span>
-          </a>
+          <div class="map-btn-row">
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Taj+Park+Hotel+Makkah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Makka</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/mekka?m=39.815171,21.428082/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
+          <div class="map-btn-row">
+            <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Saja+Al+Madinah+Hotel" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Madina</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/medina?m=39.607696,24.473729/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -1693,14 +1735,20 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <span>Video</span>
         </button>
         <div class="map-btns">
-          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Anjum+Hotel+Makkah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Makka</span>
-          </a>
-          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Madina</span>
-          </a>
+          <div class="map-btn-row">
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Anjum+Hotel+Makkah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Makka</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/mekka?m=39.819754,21.424806/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
+          <div class="map-btn-row">
+            <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Madina</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/medina?m=39.604438,24.470368/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -1753,14 +1801,20 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <span>Video</span>
         </button>
         <div class="map-btns">
-          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Anjum+Hotel+Makkah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Makka</span>
-          </a>
-          <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Madina</span>
-          </a>
+          <div class="map-btn-row">
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Anjum+Hotel+Makkah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Makka</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/mekka?m=39.819754,21.424806/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
+          <div class="map-btn-row">
+            <a class="map-btn map-btn-madina" href="https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Madina</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/medina?m=39.604438,24.470368/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -1821,14 +1875,20 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
           <span>Video</span>
         </button>
         <div class="map-btns">
-          <a class="map-btn" href="https://maps.app.goo.gl/aLbay8D32epyVonV7" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Makka</span>
-          </a>
-          <a class="map-btn map-btn-madina" id="taj-madina-map" href="https://www.google.com/maps/search/?api=1&query=Diwan+Rose+Hotel+Madinah" target="_blank">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>Madina</span>
-          </a>
+          <div class="map-btn-row">
+            <a class="map-btn" href="https://maps.app.goo.gl/aLbay8D32epyVonV7" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Makka</span>
+            </a>
+            <a class="map-btn-3d" href="https://urbi-sa.com/mekka?m=39.815171,21.428082/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
+          <div class="map-btn-row">
+            <a class="map-btn map-btn-madina" id="taj-madina-map" href="https://www.google.com/maps/search/?api=1&query=Diwan+Rose+Hotel+Madinah" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Madina</span>
+            </a>
+            <a class="map-btn-3d" id="taj-madina-3d" href="https://urbi-sa.com/medina?m=39.602859,24.465723/18/p/45" target="_blank" title="3D ko'rinish">🧊</a>
+          </div>
         </div>
       </div>
       <div class="card-footer" style="display: block; padding: 12px 24px;">
@@ -2561,11 +2621,13 @@ const seasons = {
     swissotel: {
       madina_name: 'Bosphorus Waqf Al Safi Hotel',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah',
+      madina_3d: 'https://urbi-sa.com/medina?m=39.604438,24.470368/18/p/45',
       sngl:[2700,'2 700'], dbl:[1900,'1 900'], trpl:[1750,'1 750'], quad:[1650,'1 650'],
     },
     jumeirah: {
       madina_name: 'Bosphorus Waqf Al Safi Hotel',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Bosphorus+Waqf+Al+Safi+Hotel+Madinah',
+      madina_3d: 'https://urbi-sa.com/medina?m=39.604438,24.470368/18/p/45',
       sngl:[2800,'2 800'], dbl:[1990,'1 990'], trpl:[1890,'1 890'], quad:[1750,'1 750'],
     },
     anjum: {
@@ -2575,6 +2637,7 @@ const seasons = {
     taj: {
       madina_name: 'Diwan Rose Hotel',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Diwan+Rose+Hotel+Madinah',
+      madina_3d: 'https://urbi-sa.com/medina?m=39.602859,24.465723/18/p/45',
       sngl:[1800,'1 800'], dbl:[1400,'1 400'], trpl:[1300,'1 300'], quad:[1250,'1 250'],
     },
     payshanba: [
@@ -2592,11 +2655,13 @@ const seasons = {
     swissotel: {
       madina_name: 'Worth Peninsula Hotel',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Worth+Peninsula+Hotel+Madinah',
+      madina_3d: 'https://urbi-sa.com/medina?m=39.611547,24.473508/18/p/45',
       sngl:[3250,'3 250'], dbl:[2200,'2 200'], trpl:[2000,'2 000'], quad:[1900,'1 900'],
     },
     jumeirah: {
       madina_name: 'Worth Peninsula Hotel 2',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Worth+Peninsula+Hotel+Madinah',
+      madina_3d: 'https://urbi-sa.com/medina?m=39.611547,24.473508/18/p/45',
       sngl:[3490,'3 490'], dbl:[2390,'2 390'], trpl:[2090,'2 090'], quad:[1990,'1 990'],
     },
     anjum: {
@@ -2606,6 +2671,7 @@ const seasons = {
     taj: {
       madina_name: 'Saja Al Madinah',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Saja+Al+Madinah+Hotel',
+      madina_3d: 'https://urbi-sa.com/medina?m=39.607696,24.473729/18/p/45',
       sngl:[1950,'1 950'], dbl:[1450,'1 450'], trpl:[1350,'1 350'], quad:[1300,'1 300'],
     },
     payshanba: [
@@ -2688,8 +2754,10 @@ function switchSeason(season, btn) {
     if (!pd.madina_name) return;
     const nameEl = document.getElementById(id + '-madina-name');
     const mapEl  = document.getElementById(id + '-madina-map');
+    const el3d   = document.getElementById(id + '-madina-3d');
     if (nameEl) nameEl.textContent = pd.madina_name;
     if (mapEl)  mapEl.href = pd.madina_map;
+    if (el3d)   el3d.href = pd.madina_3d;
   });
 
   // Dates

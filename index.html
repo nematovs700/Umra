@@ -1512,7 +1512,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val swiss-price" data-base="1900" data-tier="dbl">$1 900</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val swiss-price" data-base="1750" data-tier="trpl">$1 750</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val swiss-price" data-base="1650" data-tier="quad">$1 650</span></div>
-        <div class="price-detail-link" onclick="openPriceModal('swissotel10')">📅 Barcha sanalar narxi</div>
+        <div class="price-detail-link oct-only" style="display:none;" onclick="openPriceModal('swissotel10')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1573,7 +1573,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val jum-price" data-base="1990" data-tier="dbl">$1 990</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val jum-price" data-base="1890" data-tier="trpl">$1 890</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val jum-price" data-base="1750" data-tier="quad">$1 750</span></div>
-        <div class="price-detail-link" onclick="openPriceModal('jumeirah10')">📅 Barcha sanalar narxi</div>
+        <div class="price-detail-link oct-only" style="display:none;" onclick="openPriceModal('jumeirah10')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1626,7 +1626,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
     </div>
 
     <!-- ADDRESS 10 -->
-    <div class="pkg-card reveal delay-4">
+    <div class="pkg-card oct-only reveal delay-4" style="display:none;">
       <div class="card-header">
         <div class="pkg-badge badge-address">◈ Address · 10</div>
         <div class="pkg-name">Address</div>
@@ -1690,7 +1690,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val anjum-price" data-base="2250" data-tier="sngl">$2 250</span></div>
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val anjum-price" data-base="1700" data-tier="dbl">$1 700</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val anjum-price" data-base="1600" data-tier="trpl">$1 600</span></div>
-        <div class="price-detail-link" onclick="openPriceModal('anjum10')">📅 Barcha sanalar narxi</div>
+        <div class="price-detail-link oct-only" style="display:none;" onclick="openPriceModal('anjum10')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1750,7 +1750,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val" id="saja-dbl">$1 450</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val" id="saja-trpl">$1 350</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val" id="saja-quad">$1 250</span></div>
-        <div class="price-detail-link" onclick="openPriceModal('saja10')">📅 Barcha sanalar narxi</div>
+        <div class="price-detail-link oct-only" style="display:none;" onclick="openPriceModal('saja10')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1942,7 +1942,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val taj-price" data-base="1400" data-tier="dbl">$1 400</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val taj-price" data-base="1300" data-tier="trpl">$1 300</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val taj-price" data-base="1250" data-tier="quad">$1 250</span></div>
-        <div class="price-detail-link" onclick="openPriceModal('taj13')">📅 Barcha sanalar narxi</div>
+        <div class="price-detail-link oct-only" style="display:none;" onclick="openPriceModal('taj13')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -2154,6 +2154,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <button class="tab-btn active" onclick="showTab('payshanba', this)">Payshanba — Swissotel · Jumeirah · Anjum · Saja · Address</button>
       <button class="tab-btn" onclick="showTab('shanba', this)">Shanba — Anjum · Taj · Address · Doubletree</button>
       <button class="tab-btn" onclick="showTab('shanba6', this)">Shanba (6 kunlik) — Anjum-6</button>
+      <button class="tab-btn" onclick="showTab('shanbaAddress6', this)">Shanba (6 kunlik) — Address</button>
     </div>
 
     <div id="payshanba" class="dates-grid">
@@ -2182,6 +2183,25 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="date-chip"><span class="dep">22 Avg</span><span class="sep">→</span><span class="arr">27 Avg</span></div>
         <div class="date-chip"><span class="dep">29 Avg</span><span class="sep">→</span><span class="arr">03 Sep</span></div>
         <div class="date-chip"><span class="dep">05 Sep</span><span class="sep">→</span><span class="arr">10 Sep</span></div>
+    </div>
+
+    <div id="shanbaAddress6" class="dates-grid hidden">
+        <div class="date-chip"><span class="dep">19 Sep</span><span class="sep">→</span><span class="arr">24 Sep</span></div>
+        <div class="date-chip"><span class="dep">26 Sep</span><span class="sep">→</span><span class="arr">01 Okt</span></div>
+        <div class="date-chip"><span class="dep">03 Okt</span><span class="sep">→</span><span class="arr">08 Okt</span></div>
+        <div class="date-chip"><span class="dep">10 Okt</span><span class="sep">→</span><span class="arr">15 Okt</span></div>
+        <div class="date-chip"><span class="dep">17 Okt</span><span class="sep">→</span><span class="arr">22 Okt</span></div>
+        <div class="date-chip"><span class="dep">24 Okt</span><span class="sep">→</span><span class="arr">29 Okt</span></div>
+        <div class="date-chip"><span class="dep">31 Okt</span><span class="sep">→</span><span class="arr">05 Noy</span></div>
+        <div class="date-chip"><span class="dep">07 Noy</span><span class="sep">→</span><span class="arr">12 Noy</span></div>
+        <div class="date-chip"><span class="dep">14 Noy</span><span class="sep">→</span><span class="arr">19 Noy</span></div>
+        <div class="date-chip"><span class="dep">21 Noy</span><span class="sep">→</span><span class="arr">26 Noy</span></div>
+        <div class="date-chip"><span class="dep">28 Noy</span><span class="sep">→</span><span class="arr">03 Dek</span></div>
+        <div class="date-chip"><span class="dep">05 Dek</span><span class="sep">→</span><span class="arr">10 Dek</span></div>
+        <div class="date-chip"><span class="dep">12 Dek</span><span class="sep">→</span><span class="arr">17 Dek</span></div>
+        <div class="date-chip"><span class="dep">19 Dek</span><span class="sep">→</span><span class="arr">24 Dek</span></div>
+        <div class="date-chip"><span class="dep">26 Dek</span><span class="sep">→</span><span class="arr">31 Dek</span></div>
+        <div class="date-chip"><span class="dep">02 Yan</span><span class="sep">→</span><span class="arr">07 Yan</span></div>
     </div>
   </div>
 

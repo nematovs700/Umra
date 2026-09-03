@@ -2019,7 +2019,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$1 590</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 550</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 490</span></div>
-        <div class="price-detail-link" onclick="openPriceModal('address6')">📅 Barcha sanalar narxi</div>
+        <div class="price-detail-link oct-only" style="display:none;" onclick="openPriceModal('address6')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -2087,7 +2087,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val">$2 190</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val">$1 990</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val">$1 890</span></div>
-        <div class="price-detail-link" onclick="openPriceModal('doubletree13')">📅 Barcha sanalar narxi</div>
+        <div class="price-detail-link oct-only" style="display:none;" onclick="openPriceModal('doubletree13')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -2883,9 +2883,14 @@ function currentRowIndex(rows) {
   return rows.length - 1;
 }
 
+const octOnlyModalKeys = ['address6', 'doubletree13'];
+
 function openPriceModal(key) {
-  const rows = packagePrices[key];
+  let rows = packagePrices[key];
   if (!rows) return;
+  if (octOnlyModalKeys.includes(key)) {
+    rows = rows.filter(r => !r.dep.includes('Sen'));
+  }
   document.getElementById('priceModalTitle').textContent = packagePriceNames[key] || 'Barcha narxlar';
   const hasQuad = rows.some(r => r.quad !== undefined);
   const head = '<tr><th>Sana</th>' + (hasQuad ? '<th>Quad</th>' : '') + '<th>Trpl</th><th>Dbl</th><th>Sngl</th></tr>';

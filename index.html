@@ -532,6 +532,49 @@
   }
   .map-btn-3d:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
 
+  .price-detail-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 4px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px dashed var(--gold);
+    background: var(--gold-pale);
+    color: var(--amber);
+    font-size: 11.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .price-detail-link:hover { background: var(--gold); color: #fff; border-style: solid; }
+
+  .price-modal-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .price-modal-table th {
+    text-align: right;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+    white-space: nowrap;
+  }
+  .price-modal-table th:first-child { text-align: left; }
+  .price-modal-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(212,175,55,0.1);
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    color: rgba(255,255,255,0.85);
+  }
+  .price-modal-table td:first-child { text-align: left; color: rgba(255,255,255,0.55); font-size: 12.5px; }
+  .price-modal-table tr.pm-current td { background: rgba(212,175,55,0.14); font-weight: 600; color: var(--gold-light); }
+  .price-modal-table tr:last-child td { border-bottom: none; }
+
   /* Modal overlay */
   .modal-overlay {
     display: none;
@@ -1465,6 +1508,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val swiss-price" data-base="1900" data-tier="dbl">$1 900</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val swiss-price" data-base="1750" data-tier="trpl">$1 750</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val swiss-price" data-base="1650" data-tier="quad">$1 650</span></div>
+        <div class="price-detail-link" onclick="openPriceModal('swissotel10')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1525,6 +1569,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val jum-price" data-base="1990" data-tier="dbl">$1 990</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val jum-price" data-base="1890" data-tier="trpl">$1 890</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val jum-price" data-base="1750" data-tier="quad">$1 750</span></div>
+        <div class="price-detail-link" onclick="openPriceModal('jumeirah10')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1587,6 +1632,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">1 kishilik (sngl)</span><span class="price-val anjum-price" data-base="2250" data-tier="sngl">$2 250</span></div>
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val anjum-price" data-base="1700" data-tier="dbl">$1 700</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val anjum-price" data-base="1600" data-tier="trpl">$1 600</span></div>
+        <div class="price-detail-link" onclick="openPriceModal('anjum10')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1646,6 +1692,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val" id="saja-dbl">$1 450</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val" id="saja-trpl">$1 350</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val" id="saja-quad">$1 250</span></div>
+        <div class="price-detail-link" onclick="openPriceModal('saja10')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -1837,6 +1884,7 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
         <div class="price-row"><span class="price-label">2 kishilik (dbl)</span><span class="price-val taj-price" data-base="1400" data-tier="dbl">$1 400</span></div>
         <div class="price-row"><span class="price-label">3 kishilik (trpl)</span><span class="price-val taj-price" data-base="1300" data-tier="trpl">$1 300</span></div>
         <div class="price-row"><span class="price-label">4 kishilik (quad)</span><span class="price-val taj-price" data-base="1250" data-tier="quad">$1 250</span></div>
+        <div class="price-detail-link" onclick="openPriceModal('taj13')">📅 Barcha sanalar narxi</div>
       </div>
       <div class="card-hotels">
         <div class="hotel-item">
@@ -2007,6 +2055,25 @@ a:focus, button:focus, input:focus, textarea:focus, div:focus {
       <button class="vid-nav next" id="vidNext" onclick="changeVideo(1)">›</button>
     </div>
     <div class="modal-thumbs" id="modalThumbs"></div>
+  </div>
+</div>
+
+<!-- Price table modal -->
+<div class="modal-overlay" id="priceModal" onclick="priceModalOverlayClick(event)">
+  <div class="modal-box" style="max-width:640px;">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="priceModalTitle">Narxlar</div>
+        <div class="modal-label">Barcha jo'nash sanalari va narxlari</div>
+      </div>
+      <button class="modal-close" onclick="closePriceModal()">✕</button>
+    </div>
+    <div style="padding:8px 24px 24px;overflow-y:auto;max-height:70vh;">
+      <table class="price-modal-table">
+        <thead id="priceModalHead"></thead>
+        <tbody id="priceModalBody"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -2418,6 +2485,220 @@ function modalOverlayClick(e) {
   if (e.target === document.getElementById('videoModal')) closeModal();
 }
 
+// ===== Barcha narxlar (sana bo'yicha) =====
+const packagePrices = {
+  swissotel10: [
+    {dep:'3 Sen',arr:'12 Sen',quad:1650,trpl:1750,dbl:1900,sngl:2700},
+    {dep:'10 Sen',arr:'19 Sen',quad:1650,trpl:1750,dbl:1900,sngl:2700},
+    {dep:'17 Sen',arr:'26 Sen',quad:1650,trpl:1750,dbl:1900,sngl:2700},
+    {dep:'24 Sen',arr:'3 Okt',quad:1650,trpl:1750,dbl:1900,sngl:2700},
+    {dep:'1 Okt',arr:'10 Okt',quad:1890,trpl:1990,dbl:2290,sngl:3250},
+    {dep:'8 Okt',arr:'17 Okt',quad:1890,trpl:1990,dbl:2290,sngl:3250},
+    {dep:'15 Okt',arr:'24 Okt',quad:1890,trpl:1990,dbl:2290,sngl:3250},
+    {dep:'22 Okt',arr:'31 Okt',quad:1890,trpl:1990,dbl:2290,sngl:3250},
+    {dep:'29 Okt',arr:'7 Noy',quad:1890,trpl:1990,dbl:2290,sngl:3250},
+    {dep:'5 Noy',arr:'14 Noy',quad:1890,trpl:1990,dbl:2290,sngl:3250},
+    {dep:'12 Noy',arr:'21 Noy',quad:1990,trpl:2090,dbl:2390,sngl:3450},
+    {dep:'19 Noy',arr:'28 Noy',quad:1990,trpl:2090,dbl:2390,sngl:3450},
+    {dep:'26 Noy',arr:'5 Dek',quad:1990,trpl:2090,dbl:2390,sngl:3450},
+    {dep:'3 Dek',arr:'12 Dek',quad:1990,trpl:2090,dbl:2390,sngl:3450},
+    {dep:'10 Dek',arr:'19 Dek',quad:2190,trpl:2290,dbl:2590,sngl:3700},
+    {dep:'17 Dek',arr:'26 Dek',quad:2190,trpl:2290,dbl:2590,sngl:4500},
+    {dep:'24 Dek',arr:'2 Yan',quad:2390,trpl:2590,dbl:2990,sngl:4500},
+    {dep:'31 Dek',arr:'9 Yan',quad:2390,trpl:2590,dbl:2990,sngl:4000},
+  ],
+  jumeirah10: [
+    {dep:'3 Sen',arr:'12 Sen',quad:1750,trpl:1890,dbl:1990,sngl:2800},
+    {dep:'10 Sen',arr:'19 Sen',quad:1750,trpl:1890,dbl:1990,sngl:2800},
+    {dep:'17 Sen',arr:'26 Sen',quad:1750,trpl:1890,dbl:1990,sngl:2800},
+    {dep:'24 Sen',arr:'3 Okt',quad:1750,trpl:1890,dbl:1990,sngl:2800},
+    {dep:'1 Okt',arr:'10 Okt',quad:1990,trpl:2090,dbl:2390,sngl:3490},
+    {dep:'8 Okt',arr:'17 Okt',quad:1990,trpl:2090,dbl:2390,sngl:3490},
+    {dep:'15 Okt',arr:'24 Okt',quad:1990,trpl:2090,dbl:2390,sngl:3490},
+    {dep:'22 Okt',arr:'31 Okt',quad:1990,trpl:2090,dbl:2390,sngl:3490},
+    {dep:'29 Okt',arr:'7 Noy',quad:1990,trpl:2090,dbl:2390,sngl:3490},
+    {dep:'5 Noy',arr:'14 Noy',quad:1990,trpl:2090,dbl:2390,sngl:3490},
+    {dep:'12 Noy',arr:'21 Noy',quad:2090,trpl:2190,dbl:2490,sngl:3590},
+    {dep:'19 Noy',arr:'28 Noy',quad:2090,trpl:2190,dbl:2490,sngl:3590},
+    {dep:'26 Noy',arr:'5 Dek',quad:2090,trpl:2190,dbl:2490,sngl:3590},
+    {dep:'3 Dek',arr:'12 Dek',quad:2090,trpl:2190,dbl:2490,sngl:3590},
+    {dep:'10 Dek',arr:'19 Dek',quad:2290,trpl:2390,dbl:2690,sngl:4150},
+    {dep:'17 Dek',arr:'26 Dek',quad:2290,trpl:2390,dbl:2690,sngl:4400},
+    {dep:'24 Dek',arr:'2 Yan',quad:2490,trpl:2690,dbl:2990,sngl:4400},
+    {dep:'31 Dek',arr:'9 Yan',quad:2490,trpl:2690,dbl:2990,sngl:4050},
+  ],
+  address10: [
+    {dep:'1 Okt',arr:'10 Okt',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'8 Okt',arr:'17 Okt',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'15 Okt',arr:'24 Okt',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'22 Okt',arr:'31 Okt',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'29 Okt',arr:'7 Noy',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'5 Noy',arr:'14 Noy',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'12 Noy',arr:'21 Noy',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'19 Noy',arr:'28 Noy',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'26 Noy',arr:'5 Dek',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'3 Dek',arr:'12 Dek',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'10 Dek',arr:'19 Dek',quad:1990,trpl:2090,dbl:2290,sngl:3200},
+    {dep:'17 Dek',arr:'26 Dek',quad:2090,trpl:2190,dbl:2390,sngl:3850},
+    {dep:'24 Dek',arr:'2 Yan',quad:2290,trpl:2490,dbl:2790,sngl:3950},
+    {dep:'31 Dek',arr:'9 Yan',quad:2290,trpl:2490,dbl:2790,sngl:3850},
+  ],
+  anjum10: [
+    {dep:'3 Sen',arr:'12 Sen',trpl:1600,dbl:1700,sngl:2250},
+    {dep:'10 Sen',arr:'19 Sen',trpl:1600,dbl:1700,sngl:2250},
+    {dep:'17 Sen',arr:'26 Sen',trpl:1600,dbl:1700,sngl:2250},
+    {dep:'24 Sen',arr:'3 Okt',trpl:1600,dbl:1700,sngl:2250},
+    {dep:'1 Okt',arr:'10 Okt',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'8 Okt',arr:'17 Okt',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'15 Okt',arr:'24 Okt',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'22 Okt',arr:'31 Okt',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'29 Okt',arr:'7 Noy',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'5 Noy',arr:'14 Noy',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'12 Noy',arr:'21 Noy',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'19 Noy',arr:'28 Noy',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'26 Noy',arr:'5 Dek',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'3 Dek',arr:'12 Dek',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'10 Dek',arr:'19 Dek',trpl:1890,dbl:2090,sngl:2990},
+    {dep:'17 Dek',arr:'26 Dek',trpl:2090,dbl:2390,sngl:3590},
+    {dep:'24 Dek',arr:'2 Yan',trpl:2390,dbl:2790,sngl:4090},
+    {dep:'31 Dek',arr:'9 Yan',trpl:2390,dbl:2790,sngl:3790},
+  ],
+  saja10: [
+    {dep:'3 Sen',arr:'12 Sen',quad:1250,trpl:1350,dbl:1450,sngl:1850},
+    {dep:'10 Sen',arr:'19 Sen',quad:1250,trpl:1350,dbl:1450,sngl:1850},
+    {dep:'17 Sen',arr:'26 Sen',quad:1250,trpl:1350,dbl:1450,sngl:1850},
+    {dep:'24 Sen',arr:'3 Okt',quad:1250,trpl:1350,dbl:1450,sngl:1850},
+    {dep:'1 Okt',arr:'10 Okt',quad:1400,trpl:1500,dbl:1600,sngl:2000},
+    {dep:'8 Okt',arr:'17 Okt',quad:1400,trpl:1500,dbl:1600,sngl:2000},
+    {dep:'15 Okt',arr:'24 Okt',quad:1400,trpl:1500,dbl:1600,sngl:2000},
+    {dep:'22 Okt',arr:'31 Okt',quad:1400,trpl:1500,dbl:1600,sngl:2000},
+    {dep:'29 Okt',arr:'7 Noy',quad:1400,trpl:1500,dbl:1600,sngl:2000},
+    {dep:'5 Noy',arr:'14 Noy',quad:1400,trpl:1500,dbl:1600,sngl:2000},
+    {dep:'12 Noy',arr:'21 Noy',quad:1450,trpl:1550,dbl:1650,sngl:2050},
+    {dep:'19 Noy',arr:'28 Noy',quad:1450,trpl:1550,dbl:1650,sngl:2050},
+    {dep:'26 Noy',arr:'5 Dek',quad:1450,trpl:1550,dbl:1650,sngl:2050},
+    {dep:'3 Dek',arr:'12 Dek',quad:1450,trpl:1550,dbl:1650,sngl:2050},
+    {dep:'10 Dek',arr:'19 Dek',quad:1550,trpl:1650,dbl:1800,sngl:2200},
+    {dep:'17 Dek',arr:'26 Dek',quad:1550,trpl:1650,dbl:1800,sngl:2200},
+    {dep:'24 Dek',arr:'2 Yan',quad:1600,trpl:1700,dbl:1850,sngl:2250},
+    {dep:'31 Dek',arr:'9 Yan',quad:1600,trpl:1700,dbl:1850,sngl:2250},
+  ],
+  taj13: [
+    {dep:'5 Sen',arr:'17 Sen',quad:1250,trpl:1300,dbl:1400,sngl:1800},
+    {dep:'12 Sen',arr:'24 Sen',quad:1250,trpl:1300,dbl:1400,sngl:1800},
+    {dep:'19 Sen',arr:'1 Okt',quad:1250,trpl:1300,dbl:1400,sngl:1800},
+    {dep:'26 Sen',arr:'8 Okt',quad:1250,trpl:1300,dbl:1400,sngl:1800},
+    {dep:'3 Okt',arr:'15 Okt',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'10 Okt',arr:'22 Okt',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'17 Okt',arr:'29 Okt',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'24 Okt',arr:'5 Noy',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'31 Okt',arr:'12 Noy',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'7 Noy',arr:'19 Noy',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'14 Noy',arr:'26 Noy',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'21 Noy',arr:'3 Dek',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'28 Noy',arr:'10 Dek',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'5 Dek',arr:'17 Dek',quad:1390,trpl:1490,dbl:1590,sngl:2050},
+    {dep:'12 Dek',arr:'24 Dek',quad:1450,trpl:1550,dbl:1650,sngl:2150},
+    {dep:'19 Dek',arr:'31 Dek',quad:1450,trpl:1550,dbl:1650,sngl:2150},
+    {dep:'26 Dek',arr:'7 Yan',quad:1600,trpl:1700,dbl:1800,sngl:2300},
+    {dep:'2 Yan',arr:'14 Yan',quad:1550,trpl:1650,dbl:1750,sngl:2250},
+  ],
+  address6: [
+    {dep:'19 Sen',arr:'24 Sen',quad:1490,trpl:1550,dbl:1590,sngl:2100},
+    {dep:'26 Sen',arr:'1 Okt',quad:1490,trpl:1550,dbl:1590,sngl:2100},
+    {dep:'3 Okt',arr:'8 Okt',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'10 Okt',arr:'15 Okt',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'17 Okt',arr:'22 Okt',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'24 Okt',arr:'29 Okt',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'31 Okt',arr:'5 Noy',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'7 Noy',arr:'12 Noy',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'14 Noy',arr:'19 Noy',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'21 Noy',arr:'26 Noy',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'28 Noy',arr:'3 Dek',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'5 Dek',arr:'10 Dek',quad:1550,trpl:1600,dbl:1650,sngl:2100},
+    {dep:'12 Dek',arr:'17 Dek',quad:1550,trpl:1600,dbl:1650,sngl:2200},
+    {dep:'19 Dek',arr:'24 Dek',quad:1550,trpl:1600,dbl:1650,sngl:2200},
+    {dep:'26 Dek',arr:'31 Dek',quad:1650,trpl:1750,dbl:1850,sngl:2500},
+    {dep:'2 Yan',arr:'7 Yan',quad:1750,trpl:1850,dbl:1950,sngl:2600},
+  ],
+  doubletree13: [
+    {dep:'19 Sen',arr:'1 Okt',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'26 Sen',arr:'8 Okt',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'3 Okt',arr:'15 Okt',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'10 Okt',arr:'22 Okt',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'17 Okt',arr:'29 Okt',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'24 Okt',arr:'5 Noy',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'31 Okt',arr:'12 Noy',quad:1890,trpl:1990,dbl:2190,sngl:3200},
+    {dep:'7 Noy',arr:'19 Noy',quad:1990,trpl:2090,dbl:2290,sngl:3300},
+    {dep:'14 Noy',arr:'26 Noy',quad:1990,trpl:2090,dbl:2290,sngl:3300},
+    {dep:'21 Noy',arr:'3 Dek',quad:1990,trpl:2090,dbl:2290,sngl:3300},
+    {dep:'28 Noy',arr:'10 Dek',quad:1990,trpl:2090,dbl:2290,sngl:3300},
+    {dep:'5 Dek',arr:'17 Dek',quad:1990,trpl:2090,dbl:2290,sngl:3300},
+    {dep:'12 Dek',arr:'24 Dek',quad:2090,trpl:2190,dbl:2390,sngl:3900},
+    {dep:'19 Dek',arr:'31 Dek',quad:2090,trpl:2190,dbl:2390,sngl:3900},
+    {dep:'26 Dek',arr:'7 Yan',quad:2490,trpl:2690,dbl:2990,sngl:4300},
+    {dep:'2 Yan',arr:'14 Yan',quad:2290,trpl:2490,dbl:2790,sngl:4100},
+  ],
+};
+
+const packagePriceNames = {
+  swissotel10: 'Swissotel — barcha narxlar',
+  jumeirah10: 'Jumeirah — barcha narxlar',
+  address10: 'Address — barcha narxlar',
+  anjum10: 'Anjum — barcha narxlar',
+  saja10: 'Saja — barcha narxlar',
+  taj13: 'Taj — barcha narxlar',
+  address6: 'Address (6 kun) — barcha narxlar',
+  doubletree13: 'Doubletree — barcha narxlar',
+};
+
+const UZ_MONTHS = {Sen:9, Okt:10, Noy:11, Dek:12, Yan:1};
+function parseUzShortDate(str) {
+  const [d, mon] = str.split(' ');
+  const month = UZ_MONTHS[mon];
+  const year = month === 1 ? 2027 : 2026;
+  return new Date(year, month - 1, parseInt(d, 10));
+}
+
+function currentRowIndex(rows) {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  for (let i = 0; i < rows.length; i++) {
+    if (parseUzShortDate(rows[i].dep) >= today) return i;
+  }
+  return rows.length - 1;
+}
+
+function openPriceModal(key) {
+  const rows = packagePrices[key];
+  if (!rows) return;
+  document.getElementById('priceModalTitle').textContent = packagePriceNames[key] || 'Barcha narxlar';
+  const hasQuad = rows.some(r => r.quad !== undefined);
+  const head = '<tr><th>Sana</th>' + (hasQuad ? '<th>Quad</th>' : '') + '<th>Trpl</th><th>Dbl</th><th>Sngl</th></tr>';
+  document.getElementById('priceModalHead').innerHTML = head;
+  const curIdx = currentRowIndex(rows);
+  document.getElementById('priceModalBody').innerHTML = rows.map((r, i) => {
+    const cls = i === curIdx ? ' class="pm-current"' : '';
+    const quadCell = hasQuad ? `<td>${r.quad ? '$' + fmtNum(r.quad) : '—'}</td>` : '';
+    return `<tr${cls}><td>${r.dep} → ${r.arr}</td>${quadCell}<td>${r.trpl ? '$' + fmtNum(r.trpl) : '—'}</td><td>${r.dbl ? '$' + fmtNum(r.dbl) : '—'}</td><td>${r.sngl ? '$' + fmtNum(r.sngl) : '—'}</td></tr>`;
+  }).join('');
+  document.getElementById('priceModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePriceModal() {
+  document.getElementById('priceModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function priceModalOverlayClick(e) {
+  if (e.target === document.getElementById('priceModal')) closePriceModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (document.getElementById('priceModal').classList.contains('open') && e.key === 'Escape') closePriceModal();
+});
+
 document.addEventListener('keydown', e => {
   if (!document.getElementById('videoModal').classList.contains('open')) return;
   if (e.key === 'Escape') closeModal();
@@ -2656,7 +2937,7 @@ const seasons = {
       madina_name: 'Worth Peninsula Hotel',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Worth+Peninsula+Hotel+Madinah',
       madina_3d: 'https://urbi-sa.com/medina?m=39.611547,24.473508/18/p/45',
-      sngl:[3250,'3 250'], dbl:[2200,'2 200'], trpl:[2000,'2 000'], quad:[1900,'1 900'],
+      sngl:[3250,'3 250'], dbl:[2290,'2 290'], trpl:[1990,'1 990'], quad:[1890,'1 890'],
     },
     jumeirah: {
       madina_name: 'Worth Peninsula Hotel 2',
@@ -2665,14 +2946,14 @@ const seasons = {
       sngl:[3490,'3 490'], dbl:[2390,'2 390'], trpl:[2090,'2 090'], quad:[1990,'1 990'],
     },
     anjum: {
-      sngl:[2700,'2 700'], dbl:[1900,'1 900'], trpl:[1800,'1 800'],
+      sngl:[2990,'2 990'], dbl:[2090,'2 090'], trpl:[1890,'1 890'],
     },
     saja: { sngl:'2 000', dbl:'1 600', trpl:'1 500', quad:'1 400' },
     taj: {
       madina_name: 'Saja Al Madinah',
       madina_map: 'https://www.google.com/maps/search/?api=1&query=Saja+Al+Madinah+Hotel',
       madina_3d: 'https://urbi-sa.com/medina?m=39.607696,24.473729/18/p/45',
-      sngl:[1950,'1 950'], dbl:[1450,'1 450'], trpl:[1350,'1 350'], quad:[1300,'1 300'],
+      sngl:[2050,'2 050'], dbl:[1590,'1 590'], trpl:[1490,'1 490'], quad:[1390,'1 390'],
     },
     payshanba: [
       {dep:'01 Okt',arr:'10 Okt'},{dep:'08 Okt',arr:'17 Okt'},{dep:'15 Okt',arr:'24 Okt'},
